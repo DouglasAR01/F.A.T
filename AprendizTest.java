@@ -13,6 +13,8 @@ import org.junit.Test;
  */
 public class AprendizTest
 {
+    private Aprendiz aprendiz1;
+
     /**
      * Default constructor for test class AprendizTest
      */
@@ -28,6 +30,7 @@ public class AprendizTest
     @Before
     public void setUp()
     {
+        aprendiz1 = new Aprendiz("TestUser", "1234", "email@domain.com", "Pepito", "Perez", "1/01/1810", "3005523123", "Los Angeles", "Fake st23", true, 3);
     }
 
     /**
@@ -62,5 +65,15 @@ public class AprendizTest
         assertEquals("TestAprendiz", aprendiz1.getNombreUsuario());
         assertEquals(3.0, aprendiz1.getReputacion(), 0.1);
     }
+    
+    @Test
+    public void ReputacionMaximaAprendiz()
+    {        
+        assertEquals(3.0, aprendiz1.verificarRep(23), 0.1);
+        assertEquals(0, aprendiz1.verificarRep(-5), 0.1);
+    }
+
+    
 }
+
 
