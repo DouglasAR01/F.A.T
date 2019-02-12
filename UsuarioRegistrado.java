@@ -19,4 +19,6 @@ public class UsuarioRegistrado
     public void eliminarUsuario(UsuarioRegistrado target){
         target=null;
     }
+    
+    public void crearBanner(){};
 }

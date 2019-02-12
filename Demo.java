@@ -1,33 +1,49 @@
-
-/**
- * Write a description of class Demo here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
+import java.util.ArrayList;
 public class Demo
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
-    /**
-     * Constructor for objects of class Demo
-     */
-    public Demo()
-    {
-        // initialise instance variables
-        x = 0;
-    }
-
-    /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+    public static void main(){
+        ArrayList<Banner> BannersTotales = new ArrayList();
+        Aprendiz [] Usuarios = new Aprendiz[2];
+        Usuarios[0] = new Aprendiz(
+                               "Doukuest",
+                               "clavemain",
+                               "ra.douglas@hotmail.com",
+                               "Douglas Andrés",
+                               "Ramírez Brujes",
+                               "22/01/1999",
+                               "3184301032",
+                               "Bucaramanga",
+                               "Calle falsa 123 # FFF",
+                               true,
+                               3);
+        Usuarios[1] = new Tutor(
+                               "Henryxito",
+                               "v1v4nl4s0b3s4s",
+                               "henry.pena@correo.uis.edu.co",
+                               "Henry Iván",
+                               "Peña Contreras",
+                               "6/01/1999",
+                               "3013448093",
+                               "Bucaramanga",
+                               "Calle falsa 456 # 000",
+                               true,
+                               2.7,
+                               "Cerca de la UIS equisdé",
+                               12,
+                               2,
+                               12500,
+                               "Universidad industrial de Santander",
+                               "2150606"
+                               );
+        Usuarios[0].crearBanner(
+                               "Matemáticas",
+                               "Cálculo",
+                               "Derivadas",
+                               "15/02/2019",
+                               "CT 403 UIS",
+                               7000,
+                               2,
+                               true,
+                               1.5);
     }
 }
