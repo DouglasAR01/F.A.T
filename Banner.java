@@ -1,3 +1,4 @@
+
 /**
  * La clase Banner es de donde se heredan los métodos y atributos
  * necesarios para el correcto funcionamiento de BannerAprendiz y BannerTutor
@@ -60,8 +61,15 @@ public abstract class Banner
         
     }
     
-    public void contactarAutor(){
-        
+    public String contactarAutor(Aprendiz pointer){
+        if(!this.equals(pointer)){
+            return "==============================================\n"+
+                   "Contacto:"+pointer.getNombre()+"\n"+
+                   "-email:"+pointer.getEmail()+"\n"+
+                   "-celular:"+pointer.getCel()+"\n"+
+                   "==============================================\n";
+        }
+        return "No se encontró información del contacto\n";
     }
     
     

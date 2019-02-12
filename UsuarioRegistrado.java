@@ -16,7 +16,7 @@ public class UsuarioRegistrado
         this.clave = clave;
         this.email = email;
     }
-    public void eliminarUsuario(){
-        
+    public void eliminarUsuario(UsuarioRegistrado target){
+        target=null;
     }
 }

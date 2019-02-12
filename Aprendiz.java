@@ -38,8 +38,8 @@ public class Aprendiz extends UsuarioRegistrado
         this.numeroCelular = numeroCelular;
         this.ciudadResidencia = ciudadResidencia;
         this.direccionResidencia = direccionResidencia;
-        this.visibilidad = visibilidad;
-        this.reputacion = reputacion;
+        this.visibilidad = visibilidad;        
+        this.reputacion = verificarRep(reputacion);
         bannersCreados = new ArrayList();
     }
     
@@ -49,6 +49,10 @@ public class Aprendiz extends UsuarioRegistrado
     
     public String getEmail(){
         return this.email;
+    }
+    
+    public String getCel(){
+        return this.numeroCelular;
     }
     
     public String getNombre(){
@@ -91,4 +95,13 @@ public class Aprendiz extends UsuarioRegistrado
         }
     }
     
+    protected double verificarRep(double input){
+        if(input < 0){
+            return 0;
+        }
+        if(input > 3.0){
+            return 3.0;
+        }
+        return input;
+    }
 }
