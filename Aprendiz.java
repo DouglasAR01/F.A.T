@@ -67,7 +67,7 @@ public class Aprendiz extends UsuarioRegistrado
         return this.reputacion;
     }
     
-    public void crearBanner(
+    public BannerAprendiz crearBanner(
            String materia,
            String rama,
            String tema,
@@ -87,6 +87,7 @@ public class Aprendiz extends UsuarioRegistrado
         banner.setVisTutorNuevo(visTutorNuevo);
         banner.setVisCalificacionMin(visCalificacionMin);
         bannersCreados.add(banner);
+        return banner;
     }
     
     public void getBanners(){

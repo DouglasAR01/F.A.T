@@ -44,7 +44,7 @@ public class Tutor extends Aprendiz
         this.documentoInstitucion = documentoInstitucion;
     }
     
-    public void crearBanner(
+    public BannerTutor crearBanner(
            String materia,
            String rama,
            String tema,
@@ -64,6 +64,7 @@ public class Tutor extends Aprendiz
         banner.setDescripcionDescuentoGrupal(descDescuentoGrupal);
         banner.setVisibilidad(visibilidad);
         bannersCreados.add(banner);
+        return banner;
     }
     
     public String getInstitucion(){
