@@ -12,6 +12,7 @@ public abstract class Banner
     private String tema;
     private String fecha;
     private String lugar;
+    private boolean visibilidad;
     protected Aprendiz autor;
     
     public Banner(
@@ -28,6 +29,15 @@ public abstract class Banner
         this.fecha = fecha;
         this.lugar = lugar;
         this.autor = autor;
+        this.visibilidad = true;
+    }
+    
+    public boolean getVisibilidad(){
+        return this.visibilidad;
+    }
+    
+    public void setVisibilidad(boolean visibilidad){
+        this.visibilidad = visibilidad;
     }
     
     public String getMateria(){

@@ -10,7 +10,7 @@ public class BannerTutor extends Banner
     private int horasMinimas;
     private boolean descuentoPorGrupo;
     private String descripcionDescuentoGrupal;
-    private boolean visibilidad;
+    
     
     public BannerTutor(
         String materia,
@@ -35,14 +35,11 @@ public class BannerTutor extends Banner
         this.descripcionDescuentoGrupal = desc;
     }
     
-    public void setVisibilidad(boolean visibilidad){
-        this.visibilidad = visibilidad;
-    }
     
     public String verContenidoBanner(){
         return "Horas mínimas de tutoría: "+this.horasMinimas+"\n"+
                "Se hace descuento por grupo: "+((this.descuentoPorGrupo) ?
-               "Sí \n"+"Descripción del descuento grupal: "+this.descripcionDescuentoGrupal+"\n":"No")+
-               "Visible al público: "+((this.visibilidad) ? "Sí":"No")+"\n";
+               "Sí \n"+"Descripción del descuento grupal: "+this.descripcionDescuentoGrupal+"\n":"No\n")+
+               "Visible al público: "+((this.getVisibilidad()) ? "Sí":"No")+"\n";
     }
 }

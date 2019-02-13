@@ -1,9 +1,11 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 public class Demo
 {
     public static void main(){
         ArrayList<Banner> bannersTotales = new ArrayList();
         ArrayList<UsuarioRegistrado> usuariosActivos = new ArrayList();
+        Scanner scanner = new Scanner(System.in);
         
         //Creación de los actores base
         Aprendiz estudiante = new Aprendiz(
@@ -73,7 +75,7 @@ public class Demo
                                "Mecánica cuantica",
                                "Relatividad general",
                                "20/03/2019",
-                               "LP CEIS UIS",
+                              "LP CEIS UIS",
                                4,
                                false,
                                "",
@@ -81,24 +83,63 @@ public class Demo
         ));
         
         boolean opt = true;
-        UsuarioRegistrado user = guest;
+        UsuarioRegistrado rol = guest;
         while (opt){
          System.out.println("====================\nDemostración de uso de FAT: TeachApp\n====================\n"+
-                            "ROL ACTUAL: "+
+                            "ROL ACTUAL: "+rol.getClass()+"\n"+
                             "OPCIONES\n"+
                             "1. Cambiar rol\n"+
                             "2. Crear banner\n"+
                             "3. Buscar banner\n"+
                             "4. Mostrar banners propios\n"+
-                            "6. Mostrar banners disponibles\n"+
-                            "5. Salir\n"
+                            "5. Mostrar banners disponibles\n"+
+                            "6. Salir\n"
                            );
+         int res = scanner.nextInt();
+         switch(res){
+             case 1:
+                int x=0;
+                System.out.println("Roles disponibles:\n");
+                for ( UsuarioRegistrado pointer : usuariosActivos){
+                    System.out.println(""+x+" "+pointer.getClass()+"\n");
+                    x++;
+                }
+                int ent = scanner.nextInt();
+                rol = usuariosActivos.get(ent<=usuariosActivos.size()-1 ? ent : 0);          
+           
+                break;
+             case 2:
+                break;
+             case 3:
+                scanner.nextLine();
+                String materia = scanner.nextLine();
+                for(Banner pointer : bannersTotales){
+                    if(pointer.getMateria().equals(materia)){
+                        pointer.verBanner();
+                    }
+                }
+                break;
+             case 4:
+                //(Aprendiz) rol.getBanners();
+                break;
+             case 5:
+                for (Banner pointer : bannersTotales){
+                    if(pointer.getVisibilidad()){
+                        System.out.println(pointer.verBanner());
+                    }
+                }
+                break;
+             case 6:
+                opt=false;
+                break;
+             default:
+                break;
+               
+         }
         }
     }
     
-    //private static UsuarioRegistrado cambiarRol(UsuarioRegistrado usuario){
-        //return usuario;
-    //}
+    
     
     //private static Banner buscarBanner(ArrayList<Banner> banners, String materia){
         //return banner;
