@@ -90,10 +90,9 @@ public class Demo
                             "OPCIONES\n"+
                             "1. Cambiar rol\n"+
                             "2. Crear banner\n"+
-                            "3. Buscar banner\n"+
-                            "4. Mostrar banners propios\n"+
-                            "5. Mostrar banners disponibles\n"+
-                            "6. Salir\n"
+                            "3. Mostrar banners propios\n"+
+                            "4. Mostrar banners disponibles\n"+
+                            "5. Salir\n"
                            );
          int res = scanner.nextInt();
          switch(res){
@@ -109,27 +108,74 @@ public class Demo
            
                 break;
              case 2:
+                if(rol instanceof Aprendiz){
+                    String materia, rama, tema, fecha, lugar;
+                    System.out.println("Digite la materia:");
+                    scanner.nextLine();
+                    materia = scanner.nextLine();
+                    System.out.println("Digite la rama de la materia:");
+                    rama = scanner.nextLine();
+                    System.out.println("Digite el tema de la rama:");
+                    tema = scanner.nextLine();
+                    System.out.println("Digite la fecha en la que desea dar/recibir la tutoría:");
+                    fecha = scanner.nextLine();
+                    System.out.println("Digite la dirección o lugar en que será realizada la tutoría:");
+                    lugar = scanner.nextLine();
+                    if(rol instanceof Tutor){
+                        int horasMinimas;
+                        boolean descuentoGrupal, visibilidad;
+                        String descDescuentoGrupal = "";
+                        System.out.println("Digite las horas mínimas de tutoría que debrán tomar los estudiantes:");
+                        horasMinimas = scanner.nextInt();
+                        System.out.println("¿Hará descuento por grupos de estudiantes? true:Sí false:No");
+                        descuentoGrupal = scanner.nextBoolean();
+                        if(descuentoGrupal){
+                            System.out.println("Digite la descripción para aplicar el descuento:");
+                            scanner.nextLine();
+                            descDescuentoGrupal = scanner.nextLine();
+                        }
+                        System.out.println("¿Desea que el banner sea visible? true:Sí false:No");
+                        visibilidad = scanner.nextBoolean();
+                        Tutor persona = (Tutor)rol;
+                        bannersTotales.add(persona.crearBanner(materia, rama, tema, fecha,
+                                           lugar, horasMinimas, descuentoGrupal,descDescuentoGrupal,visibilidad));
+                    }else{
+                        int pagoMaximoPorHora, horasRequeridas;
+                        double rep;
+                        System.out.println("Digite el pago máximo que desea hacer por hora:");
+                        pagoMaximoPorHora = scanner.nextInt();
+                        System.out.println("Digite el número de horas requeridas:");
+                        horasRequeridas = scanner.nextInt();
+                        Aprendiz persona = (Aprendiz)rol;
+                        bannersTotales.add(persona.crearBanner(materia, rama, tema, fecha, lugar, pagoMaximoPorHora, horasRequeridas,true,0));
+                    }
+                    
+                }else{
+                    System.out.println("Debe continuar su proceso de registro para poder ver y crear banners");
+                }
                 break;
              case 3:
-                scanner.nextLine();
-                String materia = scanner.nextLine();
-                for(Banner pointer : bannersTotales){
-                    if(pointer.getMateria().equals(materia)){
-                        pointer.verBanner();
-                    }
+                if(rol instanceof Aprendiz){
+                    Aprendiz var = (Aprendiz) rol;
+                    var.getBanners();
+                }else{
+                    System.out.println("Debe continuar su proceso de registro para poder ver y crear banners");
                 }
                 break;
              case 4:
-                //(Aprendiz) rol.getBanners();
+                if(rol instanceof Aprendiz){
+                    for (Banner pointer : bannersTotales){
+                        if(pointer.getVisibilidad()){
+                            if(!(rol.getClass() == Aprendiz.class & pointer.getAutor().getClass() == Aprendiz.class))
+                            System.out.println(pointer.verBanner());
+                        }
+                    }
+                }else{
+                    System.out.println("Debe continuar su proceso de registro para poder ver y crear banners");
+                }
+                
                 break;
              case 5:
-                for (Banner pointer : bannersTotales){
-                    if(pointer.getVisibilidad()){
-                        System.out.println(pointer.verBanner());
-                    }
-                }
-                break;
-             case 6:
                 opt=false;
                 break;
              default:
