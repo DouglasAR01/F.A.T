@@ -1,0 +1,22 @@
+#BlueJ class context
+comment0.params=nombreUsuario\ clave\ email\ nombre\ apellido\ fechaNacimiento\ numeroCelular\ ciudadResidencia\ direccionResidencia\ visibilidad\ reputacion
+comment0.target=Aprendiz(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ boolean,\ double)
+comment1.params=
+comment1.target=java.lang.String\ getNombreUsuario()
+comment2.params=
+comment2.target=java.lang.String\ getEmail()
+comment3.params=
+comment3.target=java.lang.String\ getCel()
+comment4.params=
+comment4.target=java.lang.String\ getNombre()
+comment5.params=
+comment5.target=java.lang.String\ getApellido()
+comment6.params=
+comment6.target=double\ getReputacion()
+comment7.params=materia\ rama\ tema\ fecha\ lugar\ pagoMaximoPorHora\ horasRequeridas\ visTutorNuevo\ visCalificacionMin
+comment7.target=BannerAprendiz\ crearBanner(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ int,\ int,\ boolean,\ double)
+comment8.params=
+comment8.target=void\ getBanners()
+comment9.params=input
+comment9.target=double\ verificarRep(double)
+numComments=10

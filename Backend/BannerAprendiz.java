@@ -5,6 +5,7 @@
  * @author (your name) 
  * @version (a version number or a date)
  */
+package Backend;
 public class BannerAprendiz extends Banner
 {
     private int pagoMaximoPorHora;

@@ -5,6 +5,7 @@
  * @author: Douglas R
  * Date: 10/02/2019
  */
+package Backend;;
 public abstract class Banner
 {
     private String materia;

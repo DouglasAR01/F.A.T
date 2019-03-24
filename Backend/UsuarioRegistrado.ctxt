@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=nombreUsuario\ clave\ email
+comment0.target=UsuarioRegistrado(java.lang.String,\ java.lang.String,\ java.lang.String)
+comment1.params=target
+comment1.target=void\ eliminarUsuario(UsuarioRegistrado)
+comment2.params=
+comment2.target=void\ crearBanner()
+numComments=3

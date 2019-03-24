@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=nombreUsuario\ clave\ email\ nombre\ apellido\ fechaNacimiento\ numeroCelular\ ciudadResidencia\ direccionResidencia\ visibilidad\ reputacion\ direccionAlternativa\ horasPresencialesDisponibles\ horasNoPresencialesDisponibles\ precioPorHora\ institucion\ documentoInstitucion
+comment0.target=Tutor(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ boolean,\ double,\ java.lang.String,\ int,\ int,\ int,\ java.lang.String,\ java.lang.String)
+comment1.params=materia\ rama\ tema\ fecha\ lugar\ horasMinimas\ descuentoGrupal\ descDescuentoGrupal\ visibilidad
+comment1.target=BannerTutor\ crearBanner(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ int,\ boolean,\ java.lang.String,\ boolean)
+comment2.params=
+comment2.target=java.lang.String\ getInstitucion()
+numComments=3

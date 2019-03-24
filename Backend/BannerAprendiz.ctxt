@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.params=materia\ rama\ tema\ fecha\ lugar\ autor
+comment0.target=BannerAprendiz(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ Aprendiz)
+comment1.params=pagoMaximo
+comment1.target=void\ setPagoMaximoPorHora(int)
+comment2.params=horasRequeridas
+comment2.target=void\ setHorasRequeridas(int)
+comment3.params=visTutorNuevo
+comment3.target=void\ setVisTutorNuevo(boolean)
+comment4.params=visCalificacionMin
+comment4.target=void\ setVisCalificacionMin(double)
+comment5.params=
+comment5.target=java.lang.String\ verContenidoBanner()
+numComments=6

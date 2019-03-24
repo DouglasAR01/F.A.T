@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.params=materia\ rama\ tema\ fecha\ lugar\ autor
+comment0.target=BannerTutor(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ Tutor)
+comment1.params=horasMinimas
+comment1.target=void\ setHorasMinimas(int)
+comment2.params=descuentoPorGrupo
+comment2.target=void\ setDescuentoPorGrupo(boolean)
+comment3.params=desc
+comment3.target=void\ setDescripcionDescuentoGrupal(java.lang.String)
+comment4.params=
+comment4.target=java.lang.String\ verContenidoBanner()
+numComments=5
