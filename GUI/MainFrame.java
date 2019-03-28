@@ -53,7 +53,7 @@ public class MainFrame extends ModelFrame
         //Se Crea Panel Principal.
         JPanel BordererPanel = new JPanel(null);    
         BordererPanel.setPreferredSize(new Dimension(800,600));
-        BordererPanel.setBackground(new Color(165,42,42));
+        BordererPanel.setBackground(new Color(98,122,123));
         //Color Original 192,192,192
         
         //Se Instancian Paneles Complementarios.
@@ -78,7 +78,7 @@ public class MainFrame extends ModelFrame
         
         //Set action for button click
         //Call defined method
-      /* button3.addActionListener(new ActionListener() {
+        /* button3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
             System.out.println("Datos Ingresados:\n -Nombre: "+
             textfield1.getText()+
