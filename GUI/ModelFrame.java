@@ -2,10 +2,9 @@ package GUI;
 
 
 /**
- * Write a description of class ModelFrame here.
  * 
- * @author Pecons
- * @version 0
+ * @author Lokuest-Pecons
+ * @version 0.1
  */
 import javax.swing.UIManager.LookAndFeelInfo;
 import java.awt.*;
@@ -41,10 +40,10 @@ public abstract class ModelFrame extends JFrame {
         añadirComponentes();        
         
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    	this.setLocationRelativeTo(null);
-    	this.pack();
-    	this.setVisible(true);
-    	this.setResizable(false);
+        this.setLocationRelativeTo(null);
+        this.pack();
+        this.setVisible(true);
+        this.setResizable(false);
         
     }
 
@@ -61,9 +60,18 @@ public abstract class ModelFrame extends JFrame {
         
         JMenuItem save = new JMenuItem("Save   ");
         JMenuItem exit = new JMenuItem("Exit   ");
-        
+        exit.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                 dispose();
+                 System.exit(0); //calling the method is a must
+            }
+        });
         JMenuItem about = new JMenuItem("About   ");
-
+        about.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                PanelBox.mostrarMensaje("Proyecto de Ingenieria de Software 2 \n Relalizado por :\n\t -Douglas Ramirez\n\t -Henry Peña", "Acerca de:");
+            }
+        });
 
         
         file.add(save);

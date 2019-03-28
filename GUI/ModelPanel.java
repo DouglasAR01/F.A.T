@@ -3,27 +3,36 @@ package GUI;
 import java.awt.*;
 import javax.swing.*;
 /**
- * Write a description of class ModelPanel here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Lokuest-Pecons
+ * @version 0.1
  */
-public class ModelPanel extends JPanel
+public abstract class ModelPanel extends JPanel
 {
     // instance variables - replace the example below with your own
     
-
+    
     /**
      * Constructor for objects of class ModelPanel
      */
-    public ModelPanel()
+    public ModelPanel(boolean isPrincipal)
     {
-        //pane with null layout
-	super(null);	
-	this.setPreferredSize(new Dimension(800,600));
-	this.setBackground(new Color(192,192,192));
+                
+        super(null);    
+        this.setBorder(BorderFactory.createEtchedBorder(1));
+        this.setBounds(16,15,767,555);
+        this.setBackground(new Color(222,184,135)); 
+        //Color Sobrio Original : 214,217,223
+        this.setForeground(new Color(0,0,0));
+        this.setEnabled(true);
+        this.setFont(new Font("sansserif",0,12));
+        this.setVisible(isPrincipal);        
     }
-
+   
+    
+    
+   
+    
    
     
 }
