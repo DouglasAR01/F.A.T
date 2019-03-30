@@ -174,14 +174,16 @@ public class PanelCrearUsuario extends ModelPanel
     }
     public ArrayList obtenerQueryData(){        
         queryData.clear();
-        if(getTipoFormulario()==1){
-            queryData.addAll(formulario1.getDatos());
-        }
-        if(getTipoFormulario()==2){
-            queryData.addAll(formulario2.getDatos());
-        }
-        if(getTipoFormulario()==3){
-            queryData.addAll(formulario3.getDatos());
+        switch (getTipoFormulario()){
+            case 1:
+                queryData.addAll(formulario1.getDatos());
+                break;
+            case 2:
+                queryData.addAll(formulario2.getDatos());
+                break;
+            case 3:
+                queryData.addAll(formulario3.getDatos());
+                break;
         }
         return queryData;
     }

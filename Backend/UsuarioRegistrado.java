@@ -6,7 +6,8 @@
  * @version (a version number or a date)
  */
 package Backend;
-public class UsuarioRegistrado
+import java.io.Serializable;
+public class UsuarioRegistrado implements Serializable
 {
     protected String nombreUsuario;
     protected String clave;

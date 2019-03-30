@@ -21,7 +21,7 @@ import java.util.ArrayList;
  */
 public class ControladorDeEventos
 {
-    public static ConexionBD query = new ConexionBD();
+    public static final ConexionBD query = new ConexionBD();
     public static void agregarTransicionBoton(JButton boton,
                                               JPanel panelBoton,
                                               JPanel panelApuntado)

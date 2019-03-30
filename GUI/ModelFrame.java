@@ -18,6 +18,7 @@ import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 import javax.swing.border.Border;
 import javax.swing.*;
+import java.io.*;
 
 public abstract class ModelFrame extends JFrame {
     
@@ -50,6 +51,19 @@ public abstract class ModelFrame extends JFrame {
     //Métodos:
     public abstract void añadirComponentes();
     
+    //Este metodo guarda la bd
+    public void guardarBD(){
+        try{
+            FileOutputStream fs = new FileOutputStream("bd.ser");//Creamos el archivo
+            ObjectOutputStream os = new ObjectOutputStream(fs);//Esta clase tiene el método writeObject() que necesitamos
+            os.writeObject(ControladorDeEventos.query.BASE_DATOS);
+            os.close();//Hay que cerrar siempre el archivo
+        }catch(FileNotFoundException e){
+            e.printStackTrace();
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+    }
     //method for generate menu
     public void generateMenu(){
         menuBar = new JMenuBar();
@@ -62,6 +76,7 @@ public abstract class ModelFrame extends JFrame {
         JMenuItem exit = new JMenuItem("Exit   ");
         exit.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
+                 guardarBD();
                  dispose();
                  System.exit(0); //calling the method is a must
             }

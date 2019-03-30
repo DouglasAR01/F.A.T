@@ -1,6 +1,7 @@
 package Backend;
 import java.util.ArrayList;
-public class BaseDatos
+import java.io.Serializable;
+public class BaseDatos implements Serializable
 {
     private ArrayList<Banner> bannersTotales;
     private ArrayList<UsuarioRegistrado> usuariosActivos;

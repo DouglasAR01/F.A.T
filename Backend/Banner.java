@@ -5,8 +5,9 @@
  * @author: Douglas R
  * Date: 10/02/2019
  */
-package Backend;;
-public abstract class Banner
+package Backend;
+import java.io.Serializable;
+public abstract class Banner implements Serializable
 {
     private String materia;
     private String rama;
