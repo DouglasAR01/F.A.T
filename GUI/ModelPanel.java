@@ -20,7 +20,7 @@ public abstract class ModelPanel extends JPanel
                 
         super(null);    
         this.setBorder(BorderFactory.createEtchedBorder(1));
-        this.setBounds(20,25,767,555);
+        this.setBounds(16,15,767,555);
         this.setBackground(new Color(214,217,223)); 
         //Color Sobrio Original : 214,217,223
         this.setForeground(new Color(0,0,0));

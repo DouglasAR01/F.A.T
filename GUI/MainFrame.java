@@ -16,6 +16,7 @@ import java.awt.event.MouseWheelListener;
 import javax.swing.border.Border;
 import javax.swing.*;
 import Controladores.*;
+import java.util.ArrayList;
 
 /**
  * 
@@ -36,14 +37,13 @@ public class MainFrame extends ModelFrame
     private JLabel label3;
     private JLabel label4;
     private JTextField textfield1;
-    private ConexionBD query;
+    
     /**
      * Constructor for objects of class MainFrame
      */
     public MainFrame()
     {
-        super();
-        query = new ConexionBD();
+        super();        
         
     }
 
@@ -53,7 +53,7 @@ public class MainFrame extends ModelFrame
         //Se Crea Panel Principal.
         JPanel BordererPanel = new JPanel(null);    
         BordererPanel.setPreferredSize(new Dimension(800,600));
-        BordererPanel.setBackground(new Color(98,122,123));
+        BordererPanel.setBackground(new Color(64,64,64));
         //Color Original 192,192,192
         
         //Se Instancian Paneles Complementarios.
@@ -72,13 +72,19 @@ public class MainFrame extends ModelFrame
         panelCrearUsuario,
         panelPrincipal);
         
+        
+        ControladorDeEventos.hacerQueryForm(
+        panelCrearUsuario.getBotonCrear(),        
+        panelCrearUsuario);
+        
+       
         //-------------------------------------------------------
         
         
         
         //Set action for button click
         //Call defined method
-        /* button3.addActionListener(new ActionListener() {
+      /* button3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
             System.out.println("Datos Ingresados:\n -Nombre: "+
             textfield1.getText()+
