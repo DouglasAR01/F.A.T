@@ -22,5 +22,12 @@ public class UsuarioRegistrado implements Serializable
         target=null;
     }
     
+    public String getNombreUsuario(){
+        return this.nombreUsuario;
+    }
+
+    public String getEmail(){
+        return this.email;
+    }
     public void crearBanner(){};
 }

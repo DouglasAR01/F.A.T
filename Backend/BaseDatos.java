@@ -11,13 +11,7 @@ public class BaseDatos implements Serializable
         bannersTotales = new ArrayList();
         usuariosActivos = new ArrayList();
     }
-    
-    public BaseDatos(ArrayList<Banner> bannersTotales, ArrayList<UsuarioRegistrado> usuariosActivos)
-    {
-        this.bannersTotales = bannersTotales;
-        this.usuariosActivos = usuariosActivos;
-    }
-    
+        
     public ArrayList<Banner> getBanners(){
         return bannersTotales;
     }
