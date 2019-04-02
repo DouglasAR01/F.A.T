@@ -21,7 +21,7 @@ import java.util.ArrayList;
  */
 public class ControladorDeEventos
 {
-    public static final ConexionBD query = new ConexionBD();
+    public static final ConexionBD query = new ConexionBD();    
     public static void agregarTransicionBoton(JButton boton,
                                               JPanel panelBoton,
                                               JPanel panelApuntado)
@@ -37,25 +37,30 @@ public class ControladorDeEventos
     }
     });    
    }
-   public static void hacerQueryForm(JButton boton,PanelCrearUsuario panel){
-       boton.addActionListener(new ActionListener() {
+   public static void hacerQueryForm(JButton boton,PanelCrearUsuario panel){       
+       boton.addActionListener(new ActionListener() {                       
             public void actionPerformed(ActionEvent evt) {
-                ArrayList temp = panel.obtenerQueryData();               
-               
+                ArrayList temp = panel.obtenerQueryData();              
+                String response="";
+                
                 
                 if(panel.getTipoFormulario()==3){ 
                    
-                   ControladorUsuarios.crearUsuarioRegistrado(query,
+                   response=ControladorUsuarios.crearUsuarioRegistrado(query,
                    String.valueOf(temp.get(0)),
                    String.valueOf(temp.get(1)),
                    String.valueOf(temp.get(2)));
-                   PanelBox.mostrarMensaje("Usuario Creado Exitosamente", "Creación Exitosa");
+                   
+                   PanelBox.mostrarMensaje(
+                   response
+                   ,
+                   "Creación Usuario:");
                   
                   
                 }
                 if(panel.getTipoFormulario()==2){
                     
-                    ControladorUsuarios.crearAprendiz(query,
+                    response=ControladorUsuarios.crearAprendiz(query,
                     String.valueOf(temp.get(0)),
                     String.valueOf(temp.get(1)),
                     String.valueOf(temp.get(2)),
@@ -66,7 +71,11 @@ public class ControladorDeEventos
                     String.valueOf(temp.get(7)),
                     String.valueOf(temp.get(8)),
                     Boolean.getBoolean(String.valueOf(temp.get(9))));
-                    PanelBox.mostrarMensaje("Aprendiz Creado Exitosamente", "Creación Exitosa");
+                    
+                    PanelBox.mostrarMensaje(
+                    response
+                    ,
+                    "Creación Aprendiz:");
                   
                 
                 }
@@ -74,9 +83,8 @@ public class ControladorDeEventos
                     String t1,t2,t3;
                     t1=String.valueOf(temp.get(11));
                     t2=String.valueOf(temp.get(12));
-                    t3=String.valueOf(temp.get(13));
-                    
-                    ControladorUsuarios.crearTutor(query,
+                    t3=String.valueOf(temp.get(13));                    
+                    response=ControladorUsuarios.crearTutor(query,
                     String.valueOf(temp.get(0)),
                     String.valueOf(temp.get(1)),
                     String.valueOf(temp.get(2)),
@@ -93,14 +101,18 @@ public class ControladorDeEventos
                     Integer.parseInt(t3),
                     String.valueOf(temp.get(14)),
                     String.valueOf(temp.get(15)));
-                    PanelBox.mostrarMensaje("Tutor Creado Exitosamente", "Creación Exitosa");
+                    
+                    PanelBox.mostrarMensaje(
+                    response
+                    ,
+                    "Creación Tutor:");
                    
                 }
-                
-            }
-            
-        });
+                if(response.equals(Respuestas.USUARIO_CORRECTO)){
+                    panel.limpiarForms();
+                }
+            }            
+        });        
     }
-   
    
 }

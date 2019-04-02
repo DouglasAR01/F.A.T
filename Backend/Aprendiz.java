@@ -5,7 +5,7 @@
  * @author (your name) 
  * @version (a version number or a date)
  */
- package Backend;
+package Backend;
 import java.util.ArrayList;
 public class Aprendiz extends UsuarioRegistrado
 {

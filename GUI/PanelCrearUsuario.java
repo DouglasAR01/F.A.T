@@ -176,7 +176,7 @@ public class PanelCrearUsuario extends ModelPanel
         queryData.clear();
         switch (getTipoFormulario()){
             case 1:
-                queryData.addAll(formulario1.getDatos());
+                queryData.addAll(formulario1.getDatos());                
                 break;
             case 2:
                 queryData.addAll(formulario2.getDatos());
@@ -186,5 +186,18 @@ public class PanelCrearUsuario extends ModelPanel
                 break;
         }
         return queryData;
+    }
+    public void limpiarForms(){
+        switch(getTipoFormulario()){
+            case 1:
+            formulario1.limpiar();
+            break;
+            case 2:
+            formulario2.limpiar();
+            break;
+            case 3:
+            formulario3.limpiar();
+            break; 
+        }
     }
 }

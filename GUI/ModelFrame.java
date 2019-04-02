@@ -72,25 +72,22 @@ public abstract class ModelFrame extends JFrame {
         JMenu help = new JMenu("Help");
 
         
-        JMenuItem save = new JMenuItem("Save   ");
-        JMenuItem exit = new JMenuItem("Exit   ");
+        
+        JMenuItem exit = new JMenuItem("Save and Exit");
         exit.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-                 guardarBD();
-                 dispose();
-                 System.exit(0); //calling the method is a must
+                  salir();
             }
         });
         JMenuItem about = new JMenuItem("About   ");
         about.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-                PanelBox.mostrarMensaje("Proyecto de Ingenieria de Software 2 \n Relalizado por :\n\t -Douglas Ramirez\n\t -Henry Peña", "Acerca de:");
+                PanelBox.mostrarMensaje("Proyecto de Ingenieria de Software 2 \n Realizado por :\n\t -Douglas Ramirez\n\t -Henry Peña", "Acerca de:");
             }
         });
 
         
-        file.add(save);
-        file.addSeparator();
+        
         file.add(exit);
         
         help.add(about);
@@ -98,7 +95,11 @@ public abstract class ModelFrame extends JFrame {
         menuBar.add(file);        
         menuBar.add(help);
     }
-
+    public void salir(){
+        guardarBD();
+        dispose();
+        System.exit(1);
+    }
 
 
     
