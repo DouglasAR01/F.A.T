@@ -46,11 +46,9 @@ public class ControladorBanners
       return Respuestas.BANNER_CORRECTO;
    }
    
-   public static ArrayList<Banner> verBanners(ConexionBD c, UsuarioRegistrado usuario) throws IllegalAccessException{
+   public static ArrayList<Banner> verBanners(ConexionBD c, UsuarioRegistrado usuario){
        ArrayList<Banner> bannersVisibles = new ArrayList();
-       if(usuario.getClass() == UsuarioRegistrado.class){
-           throw new IllegalAccessException(Respuestas.ERROR_2);
-       }
+       
        ArrayList<Banner> bannersTotales = c.BASE_DATOS.getBanners();
        for (Banner pointer : bannersTotales){
             if(pointer.getVisibilidad()){
