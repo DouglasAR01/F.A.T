@@ -12,6 +12,7 @@ import java.awt.event.MouseWheelListener;
 import javax.swing.border.Border;
 import javax.swing.*;
 import Controladores.*;
+import Backend.*;
 import java.util.ArrayList;
 
 /**
@@ -113,6 +114,13 @@ public class ControladorDeEventos
                 }
             }            
         });        
+    }
+   public static void AñadirUsuariosComboBox(JComboBox comboBox){
+        comboBox.removeAllItems();
+        for(UsuarioRegistrado user : query.BASE_DATOS.getUsuarios()){
+            comboBox.addItem(user.getClass().toString().replace("class Backend.","")+"/"+user.getNombreUsuario());
+            
+        }
     }
    
 }

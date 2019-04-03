@@ -30,8 +30,10 @@ public abstract class ModelFrame extends JFrame {
     public ModelFrame()
     {
         this.setTitle("F.A.T");
-        this.setSize(800,600);
+        this.setSize(800,600);       
         
+        Image icon = Toolkit.getDefaultToolkit().getImage(getPath()+"icon.png");
+        this.setIconImage(icon);
         //Generar menú.
         generateMenu();
         this.setJMenuBar(menuBar);        
@@ -100,7 +102,11 @@ public abstract class ModelFrame extends JFrame {
         dispose();
         System.exit(1);
     }
-
+    public String getPath(){
+        String filePath=System.getProperty("user.dir");       
+        filePath+="\\misc\\";
+       return filePath;
+    }
 
     
     

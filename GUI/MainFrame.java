@@ -60,7 +60,7 @@ public class MainFrame extends ModelFrame
         PanelPrincipal panelPrincipal = new PanelPrincipal(true);    
         PanelCrearUsuario panelCrearUsuario = new PanelCrearUsuario(false);
         PanelSelec panelSeleccionar = new PanelSelec(false);
-        
+        UserPanel panelUsuario = new UserPanel();
     
         
         //Se Añanden Eventos para Paneles -----------------------
@@ -93,7 +93,16 @@ public class MainFrame extends ModelFrame
         panelCrearUsuario,
         panelPrincipal);
         
-       
+        ControladorDeEventos.agregarTransicionBoton(
+        panelSeleccionar.getbotonSelec(),        
+        panelSeleccionar,
+        panelUsuario);
+        
+        ControladorDeEventos.agregarTransicionBoton(
+        panelUsuario.getBotonVolver(),
+        panelUsuario,
+        panelPrincipal);
+        
         //-------------------------------------------------------
         
         
@@ -134,6 +143,7 @@ public class MainFrame extends ModelFrame
         BordererPanel.add(panelCrearUsuario);
         BordererPanel.add(panelPrincipal);
         BordererPanel.add(panelSeleccionar);
+        BordererPanel.add(panelUsuario);
         
         //Se Añade El panel Principal al Frame
     
