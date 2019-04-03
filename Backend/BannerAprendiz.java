@@ -51,4 +51,7 @@ public class BannerAprendiz extends Banner
         contenido.put("REP_MIN_TUT", this.visCalificacionMin);
         return contenido;
     }
+    public String datosString(){
+        return "/Aprendiz-"+super.datosString();
+    }
 }

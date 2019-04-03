@@ -28,6 +28,11 @@ public abstract class ModelPanel extends JPanel
         this.setFont(new Font("sansserif",0,12));
         this.setVisible(isPrincipal);        
     }
+    public String getUserData(){
+        return "";
+    }
+    public void actualizar(String datos){
+    };
    
     
     

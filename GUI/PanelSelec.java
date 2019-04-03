@@ -60,7 +60,7 @@ public class PanelSelec extends ModelPanel
         selecButton.setBounds(300,391,97,31);
         selecButton.setBackground(new Color(214,217,223));
         selecButton.setForeground(new Color(0,0,0));
-        selecButton.setEnabled(true);
+        selecButton.setEnabled(false);
         selecButton.setFont(new Font("sansserif",0,12));
         selecButton.setText("Seleccionar");
         selecButton.setVisible(true);
@@ -101,6 +101,7 @@ public class PanelSelec extends ModelPanel
         reloadButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 ControladorDeEventos.AñadirUsuariosComboBox(selecComboBox);
+                selecButton.setEnabled(true);
             }
         });
 
@@ -138,5 +139,7 @@ public class PanelSelec extends ModelPanel
     public JButton getbotonVolver(){
         return this.volverButton;
     }   
-    
+    public String getUserData(){
+        return String.valueOf(selecComboBox.getSelectedItem());
+    }
 }

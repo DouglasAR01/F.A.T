@@ -93,7 +93,7 @@ public class MainFrame extends ModelFrame
         panelCrearUsuario,
         panelPrincipal);
         
-        ControladorDeEventos.agregarTransicionBoton(
+        ControladorDeEventos.agregarTransicionBotonActualizarPanel(
         panelSeleccionar.getbotonSelec(),        
         panelSeleccionar,
         panelUsuario);

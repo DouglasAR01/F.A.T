@@ -38,6 +38,23 @@ public class ControladorDeEventos
     }
     });    
    }
+   
+    public static void agregarTransicionBotonActualizarPanel(JButton boton,
+                                                        ModelPanel panelBoton,
+                                                        ModelPanel panelApuntado)
+    {
+       boton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                if(panelBoton.isVisible()){
+                    panelBoton.setVisible(false);
+                    panelApuntado.actualizar(panelBoton.getUserData());
+                    panelApuntado.setVisible(true);
+                }
+            }
+        
+    });
+   }
+   
    public static void hacerQueryForm(JButton boton,PanelCrearUsuario panel){       
        boton.addActionListener(new ActionListener() {                       
             public void actionPerformed(ActionEvent evt) {

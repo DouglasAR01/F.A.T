@@ -46,4 +46,7 @@ public class BannerTutor extends Banner
         contenido.put("VISIBILIDAD",this.getVisibilidad());
         return contenido;
     }
+    public String datosString(){
+        return "/Tutor-"+super.datosString();
+    }
 }
