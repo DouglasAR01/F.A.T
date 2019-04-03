@@ -11,13 +11,24 @@ public class ControladorUsuarios
             }
         }
         return true;
-    }
+    }    
     private static boolean verificarClave(String clave){
         if(clave.length()<=6){
             return false;
         }
         return true;
     }
+    public static UsuarioRegistrado getUsuario(ConexionBD c, String usuario)
+    {
+        ArrayList<UsuarioRegistrado> usuarios = c.BASE_DATOS.getUsuarios();
+        for(UsuarioRegistrado usuarioActivo : usuarios){
+            if(usuarioActivo.getNombreUsuario().equals(usuario)){
+                return usuarioActivo;
+            }
+        }
+        return null;
+    }
+    
     public static String crearUsuarioRegistrado(ConexionBD c, String nombreUsuario, String clave, String correo){
         if(!(nombreUsuario.length()>=6 && Validador.verificarCorreo(correo))){
             return Respuestas.ERROR_1;
