@@ -1,4 +1,5 @@
 package Controladores;
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -39,5 +40,27 @@ public abstract class Validador
             return true;
         }
         return false;
+    }
+    
+    public static String validarUsuarios(int tipoUsuario, ArrayList datos){
+        switch(tipoUsuario){
+            case 1: //tut
+                if(!( Integer.parseInt(String.valueOf(datos.get(11)))>=0 && Integer.parseInt(String.valueOf(datos.get(12)))>=0 && Integer.parseInt(String.valueOf(datos.get(13)))>=0 )){
+                    return Respuestas.ERROR_1;
+                }
+            case 2: //Apr
+                if(!(verificarNumerico(String.valueOf(datos.get(6)),10) && verificarFecha(String.valueOf(datos.get(5))))){
+                    return Respuestas.ERROR_1;
+                }
+            case 3: //UR
+                if(!(String.valueOf(datos.get(0)).length()>=6 && verificarCorreo(String.valueOf(datos.get(2))))){
+                    return Respuestas.ERROR_1;
+                }
+                if(String.valueOf(datos.get(1)).length()<6){
+                    return Respuestas.ERROR_3;
+                }
+                break;
+        }
+        return Respuestas.USUARIO_CORRECTO;
     }
 }

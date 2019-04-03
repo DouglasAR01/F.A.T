@@ -59,76 +59,11 @@ public class ControladorDeEventos
        boton.addActionListener(new ActionListener() {                       
             public void actionPerformed(ActionEvent evt) {
                 ArrayList temp = panel.obtenerQueryData();              
-                String response="";
-                
-                
-                if(panel.getTipoFormulario()==3){ 
-                   
-                   response=ControladorUsuarios.crearUsuarioRegistrado(query,
-                   String.valueOf(temp.get(0)),
-                   String.valueOf(temp.get(1)),
-                   String.valueOf(temp.get(2)));
-                   
-                   PanelBox.mostrarMensaje(
-                   response
-                   ,
-                   "Creación Usuario:");
-                  
-                  
-                }
-                if(panel.getTipoFormulario()==2){
-                    
-                    response=ControladorUsuarios.crearAprendiz(query,
-                    String.valueOf(temp.get(0)),
-                    String.valueOf(temp.get(1)),
-                    String.valueOf(temp.get(2)),
-                    String.valueOf(temp.get(3)),
-                    String.valueOf(temp.get(4)),
-                    String.valueOf(temp.get(5)),
-                    String.valueOf(temp.get(6)),
-                    String.valueOf(temp.get(7)),
-                    String.valueOf(temp.get(8)),
-                    Boolean.getBoolean(String.valueOf(temp.get(9))));
-                    
-                    PanelBox.mostrarMensaje(
-                    response
-                    ,
-                    "Creación Aprendiz:");
-                  
-                
-                }
-                if(panel.getTipoFormulario()==1){
-                    String t1,t2,t3;
-                    t1=String.valueOf(temp.get(11));
-                    t2=String.valueOf(temp.get(12));
-                    t3=String.valueOf(temp.get(13));                    
-                    response=ControladorUsuarios.crearTutor(query,
-                    String.valueOf(temp.get(0)),
-                    String.valueOf(temp.get(1)),
-                    String.valueOf(temp.get(2)),
-                    String.valueOf(temp.get(3)),
-                    String.valueOf(temp.get(4)),
-                    String.valueOf(temp.get(5)),
-                    String.valueOf(temp.get(6)),
-                    String.valueOf(temp.get(7)),
-                    String.valueOf(temp.get(8)),
-                    Boolean.parseBoolean(String.valueOf(temp.get(9))),
-                    String.valueOf(temp.get(10)),                    
-                    Integer.parseInt(t1),
-                    Integer.parseInt(t2),
-                    Integer.parseInt(t3),
-                    String.valueOf(temp.get(14)),
-                    String.valueOf(temp.get(15)));
-                    
-                    PanelBox.mostrarMensaje(
-                    response
-                    ,
-                    "Creación Tutor:");
-                   
-                }
+                String response = ControladorUsuarios.crearUsuario(query, panel.getTipoFormulario(),temp);
                 if(response.equals(Respuestas.USUARIO_CORRECTO)){
                     panel.limpiarForms();
                 }
+                PanelBox.mostrarMensaje(response, "Creación de usuario:");
             }            
         });        
     }
