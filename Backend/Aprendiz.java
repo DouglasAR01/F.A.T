@@ -91,10 +91,8 @@ public class Aprendiz extends UsuarioRegistrado
         return banner;
     }
     
-    public void getBanners(){
-        for(Banner banner: bannersCreados){
-            System.out.println(banner.verBanner());
-        }
+    public ArrayList<Banner> getBanners(){
+        return bannersCreados;
     }
     
     protected double verificarRep(double input){

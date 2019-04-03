@@ -60,10 +60,7 @@ public class BannerAprendizTest
         assertEquals("Matemáticas", bannerAp1.getMateria());
         assertEquals("Cálculo", bannerAp1.getRama());
         assertEquals("Diferenciales", bannerAp1.getTema());
-        assertNotNull(bannerAp1.verBanner());
         assertNotNull(bannerAp1.verContenidoBanner());
-        assertNotNull(bannerAp1.verEncabezado());
-        assertNotNull(bannerAp1.verInfoAutor());
     }
 }
 

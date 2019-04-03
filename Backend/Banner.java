@@ -7,6 +7,7 @@
  */
 package Backend;
 import java.io.Serializable;
+import java.util.HashMap;
 public abstract class Banner implements Serializable
 {
     private String materia;
@@ -72,41 +73,17 @@ public abstract class Banner implements Serializable
     public void eliminarBanner(){
         
     }
+    public abstract HashMap verContenidoBanner();
     
-    public String contactarAutor(Aprendiz pointer){
-        if(!this.equals(pointer)){
-            return "==============================================\n"+
-                   "Contacto:"+pointer.getNombre()+"\n"+
-                   "-email:"+pointer.getEmail()+"\n"+
-                   "-celular:"+pointer.getCel()+"\n"+
-                   "==============================================\n";
-        }
-        return "No se encontró información del contacto\n";
+    public HashMap verBanner(){
+        HashMap<String,Object> contenido = verContenidoBanner();
+        contenido.put("E_MATERIA",this.getMateria());
+        contenido.put("E_RAMA", this.getRama());
+        contenido.put("C_NOM_USUARIO",this.autor.getNombreUsuario());
+        contenido.put("C_AUTOR", this.autor.getNombre()+" "+this.autor.getApellido());
+        contenido.put("C_EMAIL", this.autor.getEmail());
+        contenido.put("C_REP",this.autor.getReputacion());
+        return contenido;
     }
     
-    
-    
-    public String verEncabezado(){
-        return "==============================================\n"+
-               "Materia: "+this.getMateria()+"\n"+
-               "Rama: "+this.getRama()+" | Tema: "+this.getTema()+"\n"+
-               "----------------------------------------------";
-    }
-    
-    public String verInfoAutor(){
-        return "----------------------------------------------\n"+
-               "Usuario: "+this.autor.getNombreUsuario()+"\n"+
-               "Nombre del autor: "+this.autor.getNombre()+" "+this.autor.getApellido()+"\n"+
-               "Email: "+this.autor.getEmail()+"\n"+
-               "Reputacion del autor: "+this.autor.getReputacion()+
-               "\n==============================================\n";
-    }
-    
-    public abstract String verContenidoBanner();
-   
-    public String verBanner(){
-        return this.verEncabezado()+"\n"+
-               this.verContenidoBanner()+"\n"+
-               this.verInfoAutor();
-    }
 }

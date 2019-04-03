@@ -60,10 +60,6 @@ public class BannerTutorTest
         assertEquals("Fisica", bannerTu1.getMateria());
         assertEquals("Mecánica", bannerTu1.getRama());
         assertEquals("dinámica", bannerTu1.getTema());
-        assertNotNull(bannerTu1.verBanner());
-        assertNotNull(bannerTu1.verContenidoBanner());
-        assertNotNull(bannerTu1.verEncabezado());
-        assertNotNull(bannerTu1.verInfoAutor());
     }
 }
 

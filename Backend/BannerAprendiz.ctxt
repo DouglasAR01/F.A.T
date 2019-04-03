@@ -10,5 +10,5 @@ comment3.target=void\ setVisTutorNuevo(boolean)
 comment4.params=visCalificacionMin
 comment4.target=void\ setVisCalificacionMin(double)
 comment5.params=
-comment5.target=java.lang.String\ verContenidoBanner()
+comment5.target=java.util.HashMap\ verContenidoBanner()
 numComments=6

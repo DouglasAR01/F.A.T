@@ -8,5 +8,5 @@ comment2.target=void\ setDescuentoPorGrupo(boolean)
 comment3.params=desc
 comment3.target=void\ setDescripcionDescuentoGrupal(java.lang.String)
 comment4.params=
-comment4.target=java.lang.String\ verContenidoBanner()
+comment4.target=java.util.HashMap\ verContenidoBanner()
 numComments=5

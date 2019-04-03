@@ -6,6 +6,7 @@
  * @version (a version number or a date)
  */
 package Backend;
+import java.util.HashMap;
 public class BannerAprendiz extends Banner
 {
     private int pagoMaximoPorHora;
@@ -42,10 +43,12 @@ public class BannerAprendiz extends Banner
         this.visCalificacionMin = visCalificacionMin;
     }
     
-    public String verContenidoBanner(){
-        return "Pago máximo por hora: "+this.pagoMaximoPorHora+"\n"+
-               "Horas requeridas: "+this.horasRequeridas+"\n"+
-               "Visible para tutores nuevos: "+((this.visTutorNuevo) ? "Sí":"No")+"\n"+
-               "Reputación mínima del tutor: "+this.visCalificacionMin;
+    public HashMap verContenidoBanner(){
+        HashMap<String,Object> contenido = new HashMap();
+        contenido.put("PAGO_MAX",this.pagoMaximoPorHora);
+        contenido.put("HORAS_REQ",this.horasRequeridas);
+        contenido.put("VIS_TUT", this.visTutorNuevo);
+        contenido.put("REP_MIN_TUT", this.visCalificacionMin);
+        return contenido;
     }
 }
