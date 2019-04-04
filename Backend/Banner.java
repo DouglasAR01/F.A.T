@@ -79,6 +79,7 @@ public abstract class Banner implements Serializable
         HashMap<String,Object> contenido = verContenidoBanner();
         contenido.put("E_MATERIA",this.getMateria());
         contenido.put("E_RAMA", this.getRama());
+        contenido.put("E_TEMA", this.getTema());
         contenido.put("C_NOM_USUARIO",this.autor.getNombreUsuario());
         contenido.put("C_AUTOR", this.autor.getNombre()+" "+this.autor.getApellido());
         contenido.put("C_EMAIL", this.autor.getEmail());
