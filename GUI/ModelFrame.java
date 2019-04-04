@@ -27,7 +27,7 @@ public abstract class ModelFrame extends JFrame {
     /**
      * Constructor for objects of class ModelFrame
      */
-    public ModelFrame()
+    public ModelFrame(boolean haveMenu)
     {
         this.setTitle("F.A.T");
         this.setSize(800,600);       
@@ -35,14 +35,15 @@ public abstract class ModelFrame extends JFrame {
         Image icon = Toolkit.getDefaultToolkit().getImage(getPath()+"icon.png");
         this.setIconImage(icon);
         //Generar menú.
+        if(haveMenu){
         generateMenu();
         this.setJMenuBar(menuBar);        
-        
+       }
         
         
         añadirComponentes();        
         
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.pack();
         this.setVisible(true);

@@ -16,6 +16,9 @@ import Controladores.*;
 import java.net.URL;
 import java.io.IOException;
 import java.util.StringTokenizer;
+import Backend.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Write a description of class UserPanel here.
@@ -39,6 +42,8 @@ public class UserPanel extends ModelPanel
   private JLabel labelUserType;
   private JList listMyBanners;
   private JList listOtherBanners;  
+  private UsuarioRegistrado actualUser;
+  private BannerPanel panelBaner;
   public UserPanel(){
       super(false); 
       buttonDeleteBanner = new JButton();
@@ -58,6 +63,21 @@ public class UserPanel extends ModelPanel
       buttonCrear.setFont(new Font("sansserif",0,12));
       buttonCrear.setText("Crear");
       buttonCrear.setVisible(true);
+      buttonCrear.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                hacerVisible(false);
+                if(labelType.getText().equals("Aprendiz")){                    
+                panelBaner = new BannerPanel(1,actualUser);
+                }
+                else{
+                panelBaner = new BannerPanel(2,actualUser);
+                
+               }
+               
+            
+            
+            }
+        });
 
       buttonEditBanner = new JButton();
       buttonEditBanner.setBounds(629,272,81,24);
@@ -181,11 +201,17 @@ public class UserPanel extends ModelPanel
       this.add(botonVolver);
       this.add(buttonCrear);
     }
- 
+    
+  public void hacerVisible(boolean r){
+      this.setVisible(r);
+    }
+  public BannerPanel getBannerPanel(){
+      return this.panelBaner;
+    }
   public JButton getBotonVolver(){
       return this.botonVolver;
     }
-  public void actualizar(String datos){
+  public void actualizar(String datos, ConexionBD c){
       if(datos.isEmpty()){
           labelType.setText("");
           labelName.setText("Por favor Ingrese Un Usuario");          
@@ -207,7 +233,22 @@ public class UserPanel extends ModelPanel
           buttonEditBanner.setVisible(false);
           listModel1.addElement("No se Puede Añadir/Modificar/Eliminar Banners siendo un Usuario Registrado.");
           
-        }  
+        } 
+      actualUser = ControladorUsuarios.getUsuario(c,userName);
+      if(actualUser !=null){
+          DefaultListModel listModel2 = new DefaultListModel();
+          listOtherBanners.setModel(listModel2);
+          ArrayList<Banner> banners = ControladorBanners.verBanners(c, actualUser);
+          if(banners.size()>0){
+              for(Banner banner : banners){
+                  HashMap contenido = banner.verBanner();
+                  listModel2.addElement(contenido.get("E_MATERIA")+" "+contenido.get("E_RAMA"));
+                }
+            }       
+            else {
+                listModel2.addElement("No hay banners disponibles");
+            }          
+        }
      }
       //DefaultListModel listModel1 = new DefaultListModel();
       //listMyBanners.setModel(listModel1);

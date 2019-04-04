@@ -28,22 +28,15 @@ public class MainFrame extends ModelFrame
     // instance variables - replace the example below with your own
     
     
-    
-    
-    private JButton button3;
-    private JButton button4;
-    private JComboBox combobox1;
-    private JLabel label2;
-    private JLabel label3;
-    private JLabel label4;
-    private JTextField textfield1;
+        
+   
     
     /**
      * Constructor for objects of class MainFrame
      */
     public MainFrame()
     {
-        super();        
+        super(true);        
         
     }
 

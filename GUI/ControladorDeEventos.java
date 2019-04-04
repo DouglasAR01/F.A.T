@@ -47,7 +47,7 @@ public class ControladorDeEventos
             public void actionPerformed(ActionEvent evt) {
                 if(panelBoton.isVisible()){
                     panelBoton.setVisible(false);
-                    panelApuntado.actualizar(panelBoton.getUserData());
+                    panelApuntado.actualizar(panelBoton.getUserData(),query);
                     panelApuntado.setVisible(true);
                 }
             }
@@ -67,11 +67,20 @@ public class ControladorDeEventos
             }            
         });        
     }
+   public static void crearBanner(BannerPanel panel){
+       panel.getBotonCrear().addActionListener(new ActionListener() {                       
+            public void actionPerformed(ActionEvent evt) {
+                //ControladorBanners.crearBanner(query,panel.getUsuario(),);
+                //PanelBox.mostrarMensaje(response, "Creación de usuario:");
+            }            
+        });
+       
+    }
+    
    public static void AñadirUsuariosComboBox(JComboBox comboBox){
-        comboBox.removeAllItems();
-        for(UsuarioRegistrado user : query.BASE_DATOS.getUsuarios()){
-            comboBox.addItem(user.getClass().toString().replace("class Backend.","")+"/"+user.getNombreUsuario());
-            
+        comboBox.removeAllItems();        
+        for(UsuarioRegistrado user : query.BASE_DATOS.getUsuarios()){            
+            comboBox.addItem(user.getClass().toString().replace("class Backend.","")+"/"+user.getNombreUsuario());            
         }
     }
    

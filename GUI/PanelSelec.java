@@ -101,7 +101,9 @@ public class PanelSelec extends ModelPanel
         reloadButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 ControladorDeEventos.AñadirUsuariosComboBox(selecComboBox);
+                if(selecComboBox.getItemCount()>0){
                 selecButton.setEnabled(true);
+                }
             }
         });
 

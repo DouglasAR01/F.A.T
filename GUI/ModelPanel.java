@@ -2,6 +2,7 @@ package GUI;
 
 import java.awt.*;
 import javax.swing.*;
+import Controladores.*;
 /**
  * 
  * @author Lokuest-Pecons
@@ -31,7 +32,7 @@ public abstract class ModelPanel extends JPanel
     public String getUserData(){
         return "";
     }
-    public void actualizar(String datos){
+    public void actualizar(String datos,ConexionBD c){
     };
    
     
