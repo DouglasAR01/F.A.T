@@ -55,4 +55,9 @@ public class ControladorBanners
        }
        return bannersVisibles;
     }
+    
+   public static void eliminarBanner(ConexionBD c, Banner banner){
+       banner.eliminarBanner();
+       c.BASE_DATOS.getBanners().remove(banner);
+    }
 }

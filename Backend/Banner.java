@@ -71,7 +71,7 @@ public abstract class Banner implements Serializable
      * Este método permite eliminar el banner cuando el usuario lo solicite
      */
     public void eliminarBanner(){
-        
+        autor.getBanners().remove(this);
     }
     public abstract HashMap verContenidoBanner();
     
