@@ -77,7 +77,7 @@ public class BaseDatos implements Serializable
                 Aprendiz autor,
                 String materia, String rama, String tema,
                 String fecha, String lugar, int pagoMaxHora,
-                int horasReq, boolean visibilidad, int repMin){
+                int horasReq, boolean visibilidad, double repMin){
         bannersTotales.add(autor.crearBanner(
                            materia,
                            rama,

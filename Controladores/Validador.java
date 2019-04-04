@@ -63,4 +63,23 @@ public abstract class Validador
         }
         return Respuestas.USUARIO_CORRECTO;
     }
+    
+    public static String validarBanner(int tipoBanner, ArrayList datos){
+        if(!( verificarFecha(String.valueOf(datos.get(3))) )){
+            return Respuestas.ERROR_1;
+        }
+        switch(tipoBanner){
+            case 1:
+                if(!( Integer.parseInt(String.valueOf(datos.get(5)))>=0 && Integer.parseInt(String.valueOf(datos.get(6)))>=0 && Double.parseDouble(String.valueOf(datos.get(8)))>=0 )){
+                    return Respuestas.ERROR_4;
+                }
+                break;
+            case 2:
+                if(!( Integer.parseInt(String.valueOf(datos.get(5)))>=0 )){
+                    return Respuestas.ERROR_4;
+                }
+                break;
+        }
+        return Respuestas.BANNER_CORRECTO;
+    }
 }

@@ -6,45 +6,41 @@ import Backend.Aprendiz;
 import Backend.Tutor;
 public class ControladorBanners
 {
-   public static String crearBannerAprendiz(
-                 ConexionBD c,
-                 Aprendiz autor,
-                 String materia, String rama, String tema,
-                 String fecha, String lugar, int pagoMaxHora,
-                 int horasReq, boolean visibilidad, int repMin){
-      c.BASE_DATOS.crearBannerAprendiz(
-                   autor,
-                   materia,
-                   rama,
-                   tema,
-                   fecha,
-                   lugar,
-                   pagoMaxHora,
-                   horasReq,
-                   visibilidad,
-                   repMin);
-      return Respuestas.BANNER_CORRECTO;
-   }
-   
-   public static String crearBannerTutor(
-                 ConexionBD c,
-                 Tutor autor,
-                 String materia, String rama, String tema,
-                 String fecha, String lugar, int horasMin,
-                 boolean descGrup, String descDescuento, boolean visibilidad){
-      c.BASE_DATOS.crearBannerTutor(
-                   autor,
-                   materia,
-                   rama,
-                   tema,
-                   fecha,
-                   lugar,
-                   horasMin,
-                   descGrup,
-                   descDescuento,
-                   visibilidad);
-      return Respuestas.BANNER_CORRECTO;
-   }
+   public static String crearBanner(ConexionBD c, UsuarioRegistrado autor, ArrayList datos, int tipoBanner){
+       String res = Validador.validarBanner(tipoBanner, datos);
+       if(!res.equals(Respuestas.BANNER_CORRECTO)){
+           return res;
+        }
+       switch(tipoBanner){
+           case 1:
+                c.BASE_DATOS.crearBannerAprendiz(
+                   (Aprendiz) autor,
+                   String.valueOf(datos.get(0)),
+                   String.valueOf(datos.get(1)),
+                   String.valueOf(datos.get(2)),
+                   String.valueOf(datos.get(3)),
+                   String.valueOf(datos.get(4)),
+                   Integer.parseInt(String.valueOf(datos.get(5))),
+                   Integer.parseInt(String.valueOf(datos.get(6))),
+                   Boolean.getBoolean(String.valueOf(datos.get(7))),
+                   Double.parseDouble(String.valueOf(datos.get(8))));
+                 break;
+            case 2:
+                c.BASE_DATOS.crearBannerTutor(
+                   (Tutor) autor,
+                   String.valueOf(datos.get(0)),
+                   String.valueOf(datos.get(1)),
+                   String.valueOf(datos.get(2)),
+                   String.valueOf(datos.get(3)),
+                   String.valueOf(datos.get(4)),
+                   Integer.parseInt(String.valueOf(datos.get(5))),
+                   Boolean.getBoolean(String.valueOf(datos.get(6))),
+                   String.valueOf(datos.get(7)),
+                   Boolean.getBoolean(String.valueOf(datos.get(6))));
+                break;
+            }
+       return Respuestas.BANNER_CORRECTO;
+    }
    
    public static ArrayList<Banner> verBanners(ConexionBD c, UsuarioRegistrado usuario){
        ArrayList<Banner> bannersVisibles = new ArrayList();
