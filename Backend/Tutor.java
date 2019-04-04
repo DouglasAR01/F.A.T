@@ -71,4 +71,28 @@ public class Tutor extends Aprendiz
     public String getInstitucion(){
         return this.institucion;
     }
+    
+    public void setDireccionAlternativa(String var){
+        this.direccionAlternativa = var;
+    }
+    
+    public void setHorasPresencialesDisponibles(int cant){
+        this.horasPresencialesDisponibles = cant;
+    }
+    
+    public void setHorasNoPresencialesDisponibles(int cant){
+        this.horasNoPresencialesDisponibles = cant;
+    }
+    
+    public void setPrecioPorHora(int cant){
+        this.precioPorHora = cant;
+    }
+    
+    public void setInstitucion(String inst){
+        this.institucion = inst;
+    }
+    
+    public void setDocumentoInstitucion(String doc){
+        this.documentoInstitucion = doc;
+    }
 }

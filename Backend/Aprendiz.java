@@ -68,6 +68,37 @@ public class Aprendiz extends UsuarioRegistrado
         return this.reputacion;
     }
     
+    public void setNombre(String nombre){
+        this.nombre = nombre;
+    }
+    
+    public void setApellido(String apellido){
+        this.apellido = apellido;
+    }
+    
+    public void setFechaNacimiento(String fechaNacimiento){
+        this.fechaNacimiento = fechaNacimiento;
+    }
+    
+    public void setNumeroCelular(String numeroCelular){
+        this.numeroCelular = numeroCelular;
+    }
+    
+    public void setCiudadResidencia(String ciudadResidencia){
+        this.ciudadResidencia = ciudadResidencia;
+    }
+    
+    public void setDireccionResidencia(String direccionResidencia){
+        this.direccionResidencia = direccionResidencia;
+    }
+    
+    public void setVisibilidad(boolean var){
+        this.visibilidad = var;
+    }
+    
+    public void setReputacion(double val){
+        this.reputacion = val;
+    }
     public BannerAprendiz crearBanner(
            String materia,
            String rama,

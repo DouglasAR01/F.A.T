@@ -29,5 +29,18 @@ public class UsuarioRegistrado implements Serializable
     public String getEmail(){
         return this.email;
     }
+    
+    public void setNombreUsuario(String nombreUsuario){
+        this.nombreUsuario = nombreUsuario;
+    }
+    
+    public void setClave(String clave){
+        this.clave = clave;
+    }
+    
+    public void setEmail(String email){
+        this.email = email;
+    }
+    
     public void crearBanner(){};
 }
