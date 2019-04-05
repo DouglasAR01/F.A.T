@@ -8,5 +8,6 @@ HOW TO START THIS PROJECT: Ejecutar el método Estático de MainFrame
 AUTHORS: -Douglas Andrés Ramirez Brujes.
          -Henry Iván Peña Contreras.
          
-USER INSTRUCTIONS: Consideramos Que la Aplicación es Intuitiva como para Brindar Instrucciones.
+USER INSTRUCTIONS: -Es necesario tener un JDK superior a 1.8.0_201.
+                   -Se debe Copiar el package.bluej en cada uno de los Paquetes (Backend,Controladores,GUI)
 
