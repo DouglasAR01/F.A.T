@@ -3,6 +3,7 @@ package GUI;
 import javax.swing.UIManager.LookAndFeelInfo;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -29,8 +30,8 @@ import java.util.HashMap;
 public class UserPanel extends ModelPanel
 {
   private JButton buttonDeleteBanner;
-  private JButton buttonCrear;
-  private JButton buttonEditBanner;
+  private JButton buttonEdit;
+  private JButton buttonCrear;  
   private JButton buttonEditData;
   private JButton buttonRefresh;
   private JButton botonVolver;
@@ -44,16 +45,18 @@ public class UserPanel extends ModelPanel
   private JList listOtherBanners;  
   private UsuarioRegistrado actualUser;
   private BannerPanel panelBaner;
+  private ArrayList<Banner> misBanners = null;
   public UserPanel(){
       super(false); 
       buttonDeleteBanner = new JButton();
-      buttonDeleteBanner.setBounds(629,299,83,23);
+      buttonDeleteBanner.setBounds(630,299,83,23);
       buttonDeleteBanner.setBackground(new Color(214,217,223));
       buttonDeleteBanner.setForeground(new Color(0,0,0));
       buttonDeleteBanner.setEnabled(true);
       buttonDeleteBanner.setFont(new Font("sansserif",0,12));
       buttonDeleteBanner.setText("Eliminar");
       buttonDeleteBanner.setVisible(true);
+      
       
       buttonCrear = new JButton();
       buttonCrear.setBounds(630,245,79,23);
@@ -63,30 +66,26 @@ public class UserPanel extends ModelPanel
       buttonCrear.setFont(new Font("sansserif",0,12));
       buttonCrear.setText("Crear");
       buttonCrear.setVisible(true);
+      
+      buttonEdit = new JButton();
+      buttonEdit.setBounds(630,265,79,23);
+      buttonEdit.setBackground(new Color(214,217,223));
+      buttonEdit.setForeground(new Color(0,0,0));
+      buttonEdit.setEnabled(true);
+      buttonEdit.setFont(new Font("sansserif",0,12));
+      buttonEdit.setText("Ver");
+      buttonEdit.setVisible(true);
+      
+      /*
       buttonCrear.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                hacerVisible(false);
-                if(labelType.getText().equals("Aprendiz")){                    
-                panelBaner = new BannerPanel(1,actualUser);
-                }
-                else{
-                panelBaner = new BannerPanel(2,actualUser);
-                
-               }
-               
+            public void actionPerformed(ActionEvent evt) {         
+                  
             
             
             }
         });
-
-      buttonEditBanner = new JButton();
-      buttonEditBanner.setBounds(629,272,81,24);
-      buttonEditBanner.setBackground(new Color(214,217,223));
-      buttonEditBanner.setForeground(new Color(0,0,0));
-      buttonEditBanner.setEnabled(true);
-      buttonEditBanner.setFont(new Font("sansserif",0,12));
-      buttonEditBanner.setText("Editar");
-      buttonEditBanner.setVisible(true);
+      */      
+      
 
       buttonEditData = new JButton();
       buttonEditData.setBounds(299,135,97,23);
@@ -95,7 +94,7 @@ public class UserPanel extends ModelPanel
       buttonEditData.setEnabled(true);
       buttonEditData.setFont(new Font("sansserif",0,12));
       buttonEditData.setText("Editar Datos");
-      buttonEditData.setVisible(true);
+      buttonEditData.setVisible(false);      
 
       buttonRefresh = new JButton();
       buttonRefresh.setBounds(632,399,76,24);
@@ -103,7 +102,7 @@ public class UserPanel extends ModelPanel
       buttonRefresh.setForeground(new Color(0,0,0));
       buttonRefresh.setEnabled(true);
       buttonRefresh.setFont(new Font("sansserif",0,12));
-      buttonRefresh.setText("Refresh");
+      buttonRefresh.setText("Ver");
       buttonRefresh.setVisible(true);
 
       labelBienvenido = new JLabel();
@@ -185,9 +184,16 @@ public class UserPanel extends ModelPanel
       botonVolver.setFont(new Font("sansserif",0,12));
       botonVolver.setText("Volver");
       botonVolver.setVisible(true);
+      botonVolver.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {   
+                misBanners=null;      
+            
+            
+            }
+        });
       
       this.add(buttonDeleteBanner);
-      this.add(buttonEditBanner);
+      this.add(buttonEdit);
       this.add(buttonEditData);
       this.add(buttonRefresh);
       this.add(labelBienvenido);
@@ -201,17 +207,23 @@ public class UserPanel extends ModelPanel
       this.add(botonVolver);
       this.add(buttonCrear);
     }
-    
-  public void hacerVisible(boolean r){
-      this.setVisible(r);
+  public String getUserData(){
+        return labelType.getText()+"/"+labelName.getText();
     }
-  public BannerPanel getBannerPanel(){
-      return this.panelBaner;
+  
+  public ArrayList<Banner> getMisBanners(){
+     return this.misBanners;
+    }
+  
+  public JButton getBotonCrear(){
+      return this.buttonCrear;
+      
     }
   public JButton getBotonVolver(){
       return this.botonVolver;
     }
-  public void actualizar(String datos, ConexionBD c){
+  public void actualizar(String datos, ConexionBD c){  
+      
       if(datos.isEmpty()){
           labelType.setText("");
           labelName.setText("Por favor Ingrese Un Usuario");          
@@ -219,40 +231,91 @@ public class UserPanel extends ModelPanel
       else{
       StringTokenizer tokens=new StringTokenizer(datos,"/");
       String userType=tokens.nextToken();
-      String userName=tokens.nextToken();
+      String userName=tokens.nextToken();      
       labelType.setText(userType);
       labelName.setText(userName);
       buttonDeleteBanner.setVisible(true);
-      buttonCrear.setVisible(true);
-      buttonEditBanner.setVisible(true);
-      DefaultListModel listModel1 = new DefaultListModel();
+      buttonCrear.setVisible(true);      
+      DefaultListModel listModel1 = new DefaultListModel();      
       listMyBanners.setModel(listModel1);
-      if(userType.equals("UsuarioRegistrado")){
+      buttonEdit.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                if(!labelType.equals("UsuarioRegistrado")){                    
+                 JOptionPane.showMessageDialog(null, getMisBanners().get(listMyBanners.getSelectedIndex()).toString(), " ", JOptionPane.INFORMATION_MESSAGE);
+                 } 
+            }
+        });      
+      
+      
+      switch(userType){
+       
+       case "UsuarioRegistrado":
           buttonDeleteBanner.setVisible(false);
-          buttonCrear.setVisible(false);
-          buttonEditBanner.setVisible(false);
+          buttonCrear.setVisible(false);          
           listModel1.addElement("No se Puede Añadir/Modificar/Eliminar Banners siendo un Usuario Registrado.");
-          
-        } 
-      actualUser = ControladorUsuarios.getUsuario(c,userName);
+          actualUser = ControladorUsuarios.getUsuario(c,userName);
+          break;
+        
+       case "Aprendiz":
+        actualUser = (Aprendiz)ControladorUsuarios.getUsuario(c,userName);
+        Aprendiz aprendiz =(Aprendiz)actualUser;
+        misBanners= aprendiz.getBanners();
+        
+        
+        break;
+      
+       case "Tutor":
+        actualUser = (Tutor)ControladorUsuarios.getUsuario(c,userName);    
+        Tutor tutor =(Tutor)actualUser;
+        misBanners= tutor.getBanners();
+        break;
+      }
+      
+      
       if(actualUser !=null){
           DefaultListModel listModel2 = new DefaultListModel();
-          listOtherBanners.setModel(listModel2);
-          ArrayList<Banner> banners = ControladorBanners.verBanners(c, actualUser);
-          if(banners.size()>0){
-              for(Banner banner : banners){
+          listOtherBanners.setModel(listModel2); 
+          
+          if(misBanners!=null){
+              for(Banner banner : misBanners){
+                  HashMap contenido = banner.verBanner();      
+                  listModel1.addElement(contenido.get("E_MATERIA")+" "+contenido.get("E_RAMA")+" "+contenido.get("E_TEMA"));
+                  
+                }  
+            }
+            else {
+                if(!userType.equals("UsuarioRegistrado")){
+                    listModel1.addElement("El Usuario No tiene Banners");
+                }
+            }    
+          
+          ArrayList<Banner> OtrosBanners = ControladorBanners.verBanners(c, actualUser);
+          if(OtrosBanners.size()>0){
+              for(Banner banner : OtrosBanners){
                   HashMap contenido = banner.verBanner();
-                  listModel2.addElement(contenido.get("E_MATERIA")+" "+contenido.get("E_RAMA"));
+                  listModel2.addElement(contenido.get("C_AUTOR")+" "+contenido.get("E_MATERIA")+" "+contenido.get("E_RAMA")+" "+contenido.get("E_TEMA"));
                 }
             }       
             else {
                 listModel2.addElement("No hay banners disponibles");
-            }          
+            }
+            buttonRefresh.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {    
+                JOptionPane.showMessageDialog(null, OtrosBanners.get(listOtherBanners.getSelectedIndex()).toString(), " ", JOptionPane.INFORMATION_MESSAGE);              
+            
+            
+            }
+           });          
         }
      }
-      //DefaultListModel listModel1 = new DefaultListModel();
-      //listMyBanners.setModel(listModel1);
-      //verBanners(userName);
+     this.buttonDeleteBanner.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                ControladorBanners.eliminarBanner(c,getMisBanners().get(listMyBanners.getSelectedIndex()));    
+                actualizar(labelType.getText()+"/"+labelName.getText(),c);
+                
+            
+            }
+        });     
       
       
       

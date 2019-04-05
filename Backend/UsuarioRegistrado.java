@@ -42,5 +42,6 @@ public class UsuarioRegistrado implements Serializable
         this.email = email;
     }
     
-    public void crearBanner(){};
+    public void crearBanner(){};    
+    
 }

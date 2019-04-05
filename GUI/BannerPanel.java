@@ -14,8 +14,10 @@ import java.awt.event.MouseWheelListener;
 import javax.swing.border.Border;
 import javax.swing.*;
 import Controladores.*;
+import java.util.StringTokenizer;
 import Backend.*;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -32,46 +34,38 @@ public class BannerPanel extends ModelPanel
      * Constructor for objects of class BannerFrame
      */
     private JButton buttonCreate;
-	private JLabel labelCreateBanner;
-	private JLabel label11;
-	private JLabel labelField1;
-	private JLabel labelField10;
-	private JLabel labelField2;
-	private JLabel labelField3;
-	private JLabel labelField4;
-	private JLabel labelField5;
-	private JLabel labelField6;
-	private JLabel labelField7;
-	private JLabel labelField8;
-	private JLabel labelField9;	
-	private JTextField textfield10;
-	private JTextField textfield2;
-	private JTextField textfield3;
-	private JTextField textfield4;
-	private JTextField textfield5;
-	private JTextField textfield6;
-	private JTextField textfield7;
-	private JTextField textfield8;
-	private JCheckBox field9;
-	private JButton buttonCancel;
-	private UsuarioRegistrado usuarioActual;
-	private int bannerType;
-    public BannerPanel(int userType, UsuarioRegistrado user)
+    private JLabel labelCreateBanner;
+    private JLabel label11;
+    private JLabel labelField1;
+    private JLabel labelField10;
+    private JLabel labelField2;
+    private JLabel labelField3;
+    private JLabel labelField4;
+    private JLabel labelField5;
+    private JLabel labelField6;
+    private JLabel labelField7;
+    private JLabel labelField8;
+    private JLabel labelField9; 
+    private JTextField textfield10;
+    private JTextField textfield2;
+    private JTextField textfield3;
+    private JTextField textfield4;
+    private JTextField textfield5;
+    private JTextField textfield6;
+    private JTextField textfield7;
+    private JTextField textfield8;
+    private JCheckBox field9;
+    private JButton buttonCancel;
+    private UsuarioRegistrado usuarioActual;
+    private int bannerType;
+    public BannerPanel()
     {  
-       super(false);
-       
+       super(false);       
        
        this.setBorder(BorderFactory.createEtchedBorder(1));
-	   this.setBounds(25,27,752,541);
-	   this.setBackground(new Color(214,217,223));
-	   this.setForeground(new Color(0,0,0));
-	   this.setEnabled(true);
-	   this.setFont(new Font("sansserif",0,12));
-	   this.setVisible(true);
-	   
-	   usuarioActual=user;
-	   bannerType=userType;
-	   
+       this.setBounds(25,27,752,541);               
+       
+       
        buttonCreate = new JButton();
        buttonCreate.setBounds(276,491,90,35);
        buttonCreate.setBackground(new Color(214,217,223));
@@ -79,7 +73,8 @@ public class BannerPanel extends ModelPanel
        buttonCreate.setEnabled(true);
        buttonCreate.setFont(new Font("sansserif",0,12));
        buttonCreate.setText("Crear");
-       buttonCreate.setVisible(true);
+       buttonCreate.setVisible(true);       
+       
        
        buttonCancel = new JButton();
        buttonCancel.setBounds(372,492,90,35);
@@ -87,7 +82,7 @@ public class BannerPanel extends ModelPanel
        buttonCancel.setForeground(new Color(0,0,0));
        buttonCancel.setEnabled(true);
        buttonCancel.setFont(new Font("sansserif",0,12));
-       buttonCancel.setText("Button2");
+       buttonCancel.setText("Cancelar");
        buttonCancel.setVisible(true);
        
        labelCreateBanner = new JLabel();
@@ -104,8 +99,7 @@ public class BannerPanel extends ModelPanel
        label11.setBackground(new Color(214,217,223));
        label11.setForeground(new Color(0,0,0));
        label11.setEnabled(true);
-       label11.setFont(new Font("sansserif",0,12));
-       label11.setText(user.getNombreUsuario());
+       label11.setFont(new Font("sansserif",0,12));       
        label11.setVisible(true);
 
        labelField1 = new JLabel();
@@ -122,7 +116,7 @@ public class BannerPanel extends ModelPanel
        labelField10.setBackground(new Color(214,217,223));
        labelField10.setForeground(new Color(0,0,0));
        labelField10.setEnabled(true);
-       labelField10.setFont(new Font("sansserif",0,12));		
+       labelField10.setFont(new Font("sansserif",0,12));        
        labelField10.setVisible(true);
 
        labelField2 = new JLabel();
@@ -175,7 +169,7 @@ public class BannerPanel extends ModelPanel
        labelField7.setBackground(new Color(214,217,223));
        labelField7.setForeground(new Color(0,0,0));
        labelField7.setEnabled(true);
-       labelField7.setFont(new Font("sansserif",0,12));		
+       labelField7.setFont(new Font("sansserif",0,12));     
        labelField7.setVisible(true);
 
        labelField8 = new JLabel();
@@ -194,7 +188,7 @@ public class BannerPanel extends ModelPanel
        labelField9.setFont(new Font("sansserif",0,12));
        labelField9.setText("Visibilidad:");
        labelField9.setVisible(true);
-		
+        
 
        textfield10 = new JTextField();
        textfield10.setBounds(496,368,90,35);
@@ -277,9 +271,56 @@ public class BannerPanel extends ModelPanel
        field9.setText("Visible");
        field9.setVisible(true);
        
-		//adding components to contentPane panel
-		
-       switch(userType){
+        //adding components to contentPane panel
+        
+       
+                
+        //adding components to contentPane panel
+        this.add(buttonCreate);
+        this.add(buttonCancel);
+        this.add(labelCreateBanner);
+        this.add(label11);
+        this.add(labelField1);
+        this.add(labelField10);
+        this.add(labelField2);
+        this.add(labelField3);
+        this.add(labelField4);
+        this.add(labelField5);
+        this.add(labelField6);
+        this.add(labelField7);
+        this.add(labelField8);
+        this.add(labelField9);      
+        this.add(textfield10);
+        this.add(textfield2);
+        this.add(textfield3);
+        this.add(textfield4);
+        this.add(textfield5);
+        this.add(textfield6);
+        this.add(textfield7);
+        this.add(textfield8);
+        this.add(field9);
+       
+
+        
+        
+        
+    }
+    
+    public void actualizar(String datos, ConexionBD c){ 
+        limpiar();
+        StringTokenizer tokens=new StringTokenizer(datos,"/");
+        String userType=tokens.nextToken();
+        String userName=tokens.nextToken();
+        this.usuarioActual=ControladorUsuarios.getUsuario(c,userName);
+        if(userType.equals("Aprendiz")){
+          this.bannerType=1;  
+        }
+        else{
+            this.bannerType=2;             
+        }
+        
+        label11.setText(usuarioActual.getNombreUsuario());
+        switch(this.bannerType){
            case 1:
            //Aprendiz
            labelField7.setText("Pago Max/h:");
@@ -293,37 +334,8 @@ public class BannerPanel extends ModelPanel
            labelField10.setText("Descripcion:");   
            break;
         }
-				
-		//adding components to contentPane panel
-		this.add(buttonCreate);
-		this.add(buttonCancel);
-		this.add(labelCreateBanner);
-		this.add(label11);
-		this.add(labelField1);
-		this.add(labelField10);
-		this.add(labelField2);
-		this.add(labelField3);
-		this.add(labelField4);
-		this.add(labelField5);
-		this.add(labelField6);
-		this.add(labelField7);
-		this.add(labelField8);
-		this.add(labelField9);		
-		this.add(textfield10);
-		this.add(textfield2);
-		this.add(textfield3);
-		this.add(textfield4);
-		this.add(textfield5);
-		this.add(textfield6);
-		this.add(textfield7);
-		this.add(textfield8);
-		this.add(field9);
-       
-
-		
-		
-	  	
-    }    
+        
+    }
     public JButton getBotonCrear(){
         return this.buttonCreate;
     }
@@ -336,8 +348,9 @@ public class BannerPanel extends ModelPanel
     public int getBannerType(){
     return this.bannerType;
     }
+    
     public ArrayList getDatos(){
-        ArrayList datos = new ArrayList<Object>();
+        ArrayList datos = new ArrayList<Object>();        
         datos.add(textfield2.getText());
         datos.add(textfield3.getText());
         datos.add(textfield4.getText());
@@ -356,7 +369,17 @@ public class BannerPanel extends ModelPanel
         
         return datos;
     }
-		
+    public void limpiar(){
+        field9.setSelected(false);
+        textfield2.setText("");
+        textfield3.setText("");
+        textfield4.setText("");
+        textfield5.setText("");
+        textfield6.setText("");
+        textfield7.setText("");
+        textfield8.setText("");
+    }
+        
         
         
 }

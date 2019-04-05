@@ -84,6 +84,7 @@ public abstract class Banner implements Serializable
         contenido.put("C_AUTOR", this.autor.getNombre()+" "+this.autor.getApellido());
         contenido.put("C_EMAIL", this.autor.getEmail());
         contenido.put("C_REP",this.autor.getReputacion());
+        contenido.put("SELF",this);
         return contenido;
     }
     public String datosString(){

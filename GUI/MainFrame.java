@@ -54,6 +54,7 @@ public class MainFrame extends ModelFrame
         PanelCrearUsuario panelCrearUsuario = new PanelCrearUsuario(false);
         PanelSelec panelSeleccionar = new PanelSelec(false);
         UserPanel panelUsuario = new UserPanel();
+        BannerPanel panelCrearBanner = new BannerPanel();
     
         
         //Se Añanden Eventos para Paneles -----------------------
@@ -96,47 +97,30 @@ public class MainFrame extends ModelFrame
         panelUsuario,
         panelPrincipal);
         
+        ControladorDeEventos.agregarTransicionBotonActualizarPanel(
+        panelUsuario.getBotonCrear(),        
+        panelUsuario,
+        panelCrearBanner);
         //-------------------------------------------------------
+        ControladorDeEventos.agregarTransicionBoton(
+        panelCrearBanner.getBotonCancelar(),
+        panelCrearBanner,
+        panelUsuario);
         
+        ControladorDeEventos.crearBanner(panelCrearBanner);
         
+        ControladorDeEventos.agregarTransicionBoton(
+        panelCrearBanner.getBotonCrear(),
+        panelCrearBanner,
+        panelUsuario);        
         
-        //Set action for button click
-        //Call defined method
-      /* button3.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-            System.out.println("Datos Ingresados:\n -Nombre: "+
-            textfield1.getText()+
-            "\n tipo de Usuario: "+
-            combobox1.getSelectedItem());
-            
-            ControladorUsuarios.crearTutor(query,
-                                            textfield1.getText(),
-                                            "1234", "_correo_",
-                                            "_nombre_",
-                                            "_apellido_",
-                                            "_fechaNacimiento_",
-                                            "_celular_",
-                                            "_ciudadResidencia_",
-                                            "_direccion_",
-                                            true,
-                                            "_direccionAlter_",
-                                            20,
-                                            4,
-                                            5000,
-                                            "_institucion_",
-                                            "_documentoInstitucion_");
-            
-            
-            }
-        });
-        */
-               
-
+       
         //Se Agregan los Paneles Al Panel Principal
         BordererPanel.add(panelCrearUsuario);
         BordererPanel.add(panelPrincipal);
         BordererPanel.add(panelSeleccionar);
         BordererPanel.add(panelUsuario);
+        BordererPanel.add(panelCrearBanner);
         
         //Se Añade El panel Principal al Frame
     
@@ -145,8 +129,7 @@ public class MainFrame extends ModelFrame
         
         
         
-    }
-    
+    }    
     //Función De Inicialización ---------------------------------
     public static void main(String[] args){
         System.setProperty("swing.defaultlaf", "com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");

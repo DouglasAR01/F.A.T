@@ -70,8 +70,8 @@ public class ControladorDeEventos
    public static void crearBanner(BannerPanel panel){
        panel.getBotonCrear().addActionListener(new ActionListener() {                       
             public void actionPerformed(ActionEvent evt) {
-                //ControladorBanners.crearBanner(query,panel.getUsuario(),);
-                //PanelBox.mostrarMensaje(response, "Creación de usuario:");
+                String response= ControladorBanners.crearBanner(query, panel.getUsuario(), panel.getDatos(), panel.getBannerType());
+                PanelBox.mostrarMensaje(response, "Creación de Banner:");
             }            
         });
        
