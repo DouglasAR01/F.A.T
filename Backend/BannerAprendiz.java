@@ -51,7 +51,11 @@ public class BannerAprendiz extends Banner
         contenido.put("REP_MIN_TUT", this.visCalificacionMin);
         return contenido;
     }
-    public String datosString(){
-        return "/Aprendiz-"+super.datosString();
+    
+    public String verContenidoBannerString(){
+        return "Pago máximo por hora: "+this.pagoMaximoPorHora+"\n"+
+               "Horas requeridas: "+this.horasRequeridas+"\n"+
+               "Visible para tutores nuevos: "+((this.visTutorNuevo) ? "Sí":"No")+"\n"+
+               "Reputación mínima del tutor: "+this.visCalificacionMin;
     }
 }

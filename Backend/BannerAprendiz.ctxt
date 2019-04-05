@@ -12,5 +12,5 @@ comment4.target=void\ setVisCalificacionMin(double)
 comment5.params=
 comment5.target=java.util.HashMap\ verContenidoBanner()
 comment6.params=
-comment6.target=java.lang.String\ datosString()
+comment6.target=java.lang.String\ verContenidoBannerString()
 numComments=7

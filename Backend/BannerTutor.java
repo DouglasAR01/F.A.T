@@ -46,7 +46,11 @@ public class BannerTutor extends Banner
         contenido.put("VISIBILIDAD",this.getVisibilidad());
         return contenido;
     }
-    public String datosString(){
-        return "/Tutor-"+super.datosString();
+    
+    public String verContenidoBannerString(){
+        return "Horas mínimas de tutoría: "+this.horasMinimas+"\n"+
+               "Se hace descuento por grupo: "+((this.descuentoPorGrupo) ?
+               "Sí \n"+"Descripción del descuento grupal: "+this.descripcionDescuentoGrupal+"\n":"No\n")+
+               "Visible al público: "+((this.getVisibilidad()) ? "Sí":"No")+"\n";
     }
 }

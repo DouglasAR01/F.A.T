@@ -87,7 +87,26 @@ public abstract class Banner implements Serializable
         contenido.put("SELF",this);
         return contenido;
     }
-    public String datosString(){
-        return "Autor:"+getAutor()+"Rama:"+getRama()+"Materia:"+getMateria()+"Tema:"+getTema();
+    public String verEncabezado(){
+        return "==============================================\n"+
+               "Materia: "+this.getMateria()+"\n"+
+               "Rama: "+this.getRama()+" | Tema: "+this.getTema()+"\n"+
+               "----------------------------------------------";
+    }
+    
+    public String verInfoAutor(){
+        return "----------------------------------------------\n"+
+               "Usuario: "+this.autor.getNombreUsuario()+"\n"+
+               "Nombre del autor: "+this.autor.getNombre()+" "+this.autor.getApellido()+"\n"+
+               "Email: "+this.autor.getEmail()+"\n"+
+               "Reputacion del autor: "+this.autor.getReputacion()+
+               "\n==============================================\n";
+    }
+    public abstract String verContenidoBannerString();
+    
+    public String toString(){
+        return this.verEncabezado()+"\n"+
+               this.verContenidoBannerString()+"\n"+
+               this.verInfoAutor();
     }
 }

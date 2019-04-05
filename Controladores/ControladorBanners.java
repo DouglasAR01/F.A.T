@@ -36,8 +36,7 @@ public class ControladorBanners
                    Integer.parseInt(String.valueOf(datos.get(5))),
                    Boolean.getBoolean(String.valueOf(datos.get(6))),
                    String.valueOf(datos.get(7)),
-                   Boolean.getBoolean(String.valueOf(datos.get(8))));
-                   System.out.println(String.valueOf(datos.get(8)));
+                   true);
                 break;
             }
        return Respuestas.BANNER_CORRECTO;
