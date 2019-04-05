@@ -14,10 +14,9 @@ import javax.swing.border.Border;
 import javax.swing.*;
 import java.util.ArrayList;
 /**
- * Write a description of class FormularioAprendiz here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Lokuest-Pecons
+ * @version 0.8
  */
 public class FormularioAprendiz extends Formulario
 {

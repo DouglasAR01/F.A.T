@@ -4,7 +4,7 @@ package GUI;
 /**
  * 
  * @author Lokuest-Pecons
- * @version 0.1
+ * @version 0.8
  */
 import javax.swing.UIManager.LookAndFeelInfo;
 import java.awt.*;

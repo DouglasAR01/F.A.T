@@ -17,7 +17,7 @@ import java.util.ArrayList;
 /**
  * 
  * @author Lokuest-Pecons
- * @version 0.1
+ * @version 0.8
  */
 public class PanelCrearUsuario extends ModelPanel
 {

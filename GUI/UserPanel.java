@@ -22,17 +22,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * Write a description of class UserPanel here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Lokuest-Pecons
+ * @version 0.8
  */
 public class UserPanel extends ModelPanel
 {
   private JButton buttonDeleteBanner;
-  private JButton buttonEdit;
+  private JButton buttonSeeMB;
   private JButton buttonCrear;  
-  private JButton buttonEditData;
+  private JButton buttonSeeMBData;
   private JButton buttonRefresh;
   private JButton botonVolver;
   private JLabel labelBienvenido;
@@ -46,6 +45,7 @@ public class UserPanel extends ModelPanel
   private UsuarioRegistrado actualUser;
   private BannerPanel panelBaner;
   private ArrayList<Banner> misBanners = null;
+  private ArrayList<Banner> OtrosBanners =null;
   public UserPanel(){
       super(false); 
       buttonDeleteBanner = new JButton();
@@ -67,14 +67,21 @@ public class UserPanel extends ModelPanel
       buttonCrear.setText("Crear");
       buttonCrear.setVisible(true);
       
-      buttonEdit = new JButton();
-      buttonEdit.setBounds(630,265,79,23);
-      buttonEdit.setBackground(new Color(214,217,223));
-      buttonEdit.setForeground(new Color(0,0,0));
-      buttonEdit.setEnabled(true);
-      buttonEdit.setFont(new Font("sansserif",0,12));
-      buttonEdit.setText("Ver");
-      buttonEdit.setVisible(true);
+      buttonSeeMB = new JButton();
+      buttonSeeMB.setBounds(630,265,79,23);
+      buttonSeeMB.setBackground(new Color(214,217,223));
+      buttonSeeMB.setForeground(new Color(0,0,0));
+      buttonSeeMB.setEnabled(true);
+      buttonSeeMB.setFont(new Font("sansserif",0,12));
+      buttonSeeMB.setText("Ver");
+      buttonSeeMB.setVisible(true);
+      buttonSeeMB.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                if(misBanners!=null){                                    
+                 JOptionPane.showMessageDialog(null, getMisBanners().get(listMyBanners.getSelectedIndex()).toString(), " ", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+        }); 
       
       /*
       buttonCrear.addActionListener(new ActionListener() {
@@ -87,14 +94,14 @@ public class UserPanel extends ModelPanel
       */      
       
 
-      buttonEditData = new JButton();
-      buttonEditData.setBounds(299,135,97,23);
-      buttonEditData.setBackground(new Color(214,217,223));
-      buttonEditData.setForeground(new Color(0,0,0));
-      buttonEditData.setEnabled(true);
-      buttonEditData.setFont(new Font("sansserif",0,12));
-      buttonEditData.setText("Editar Datos");
-      buttonEditData.setVisible(false);      
+      buttonSeeMBData = new JButton();
+      buttonSeeMBData.setBounds(299,135,97,23);
+      buttonSeeMBData.setBackground(new Color(214,217,223));
+      buttonSeeMBData.setForeground(new Color(0,0,0));
+      buttonSeeMBData.setEnabled(true);
+      buttonSeeMBData.setFont(new Font("sansserif",0,12));
+      buttonSeeMBData.setText("Editar Datos");
+      buttonSeeMBData.setVisible(false);      
 
       buttonRefresh = new JButton();
       buttonRefresh.setBounds(632,399,76,24);
@@ -104,6 +111,14 @@ public class UserPanel extends ModelPanel
       buttonRefresh.setFont(new Font("sansserif",0,12));
       buttonRefresh.setText("Ver");
       buttonRefresh.setVisible(true);
+      buttonRefresh.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                if(OtrosBanners!=null){
+                JOptionPane.showMessageDialog(null, OtrosBanners.get(listOtherBanners.getSelectedIndex()).toString(), " ", JOptionPane.INFORMATION_MESSAGE);         
+               }
+            
+            }
+           }); 
 
       labelBienvenido = new JLabel();
       labelBienvenido.setBounds(241,70,135,34);
@@ -186,15 +201,16 @@ public class UserPanel extends ModelPanel
       botonVolver.setVisible(true);
       botonVolver.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {   
-                misBanners=null;      
+                //this.misBanners=null;
+                //this.OtrosBanners=null;
             
             
             }
         });
       
       this.add(buttonDeleteBanner);
-      this.add(buttonEdit);
-      this.add(buttonEditData);
+      this.add(buttonSeeMB);
+      this.add(buttonSeeMBData);
       this.add(buttonRefresh);
       this.add(labelBienvenido);
       this.add(labelMyBanners);
@@ -223,7 +239,8 @@ public class UserPanel extends ModelPanel
       return this.botonVolver;
     }
   public void actualizar(String datos, ConexionBD c){  
-      
+     this.misBanners=null;
+     this.OtrosBanners=null; 
       if(datos.isEmpty()){
           labelType.setText("");
           labelName.setText("Por favor Ingrese Un Usuario");          
@@ -237,14 +254,8 @@ public class UserPanel extends ModelPanel
       buttonDeleteBanner.setVisible(true);
       buttonCrear.setVisible(true);      
       DefaultListModel listModel1 = new DefaultListModel();      
-      listMyBanners.setModel(listModel1);
-      buttonEdit.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                if(!labelType.equals("UsuarioRegistrado")){                    
-                 JOptionPane.showMessageDialog(null, getMisBanners().get(listMyBanners.getSelectedIndex()).toString(), " ", JOptionPane.INFORMATION_MESSAGE);
-                 } 
-            }
-        });      
+      listMyBanners.setModel(listModel1); 
+           
       
       
       switch(userType){
@@ -259,7 +270,7 @@ public class UserPanel extends ModelPanel
        case "Aprendiz":
         actualUser = (Aprendiz)ControladorUsuarios.getUsuario(c,userName);
         Aprendiz aprendiz =(Aprendiz)actualUser;
-        misBanners= aprendiz.getBanners();
+        this.misBanners= aprendiz.getBanners();
         
         
         break;
@@ -267,7 +278,7 @@ public class UserPanel extends ModelPanel
        case "Tutor":
         actualUser = (Tutor)ControladorUsuarios.getUsuario(c,userName);    
         Tutor tutor =(Tutor)actualUser;
-        misBanners= tutor.getBanners();
+        this.misBanners= tutor.getBanners();
         break;
       }
       
@@ -289,23 +300,17 @@ public class UserPanel extends ModelPanel
                 }
             }    
           
-          ArrayList<Banner> OtrosBanners = ControladorBanners.verBanners(c, actualUser);
+          this.OtrosBanners = ControladorBanners.verBanners(c, actualUser);
           if(OtrosBanners.size()>0){
               for(Banner banner : OtrosBanners){
                   HashMap contenido = banner.verBanner();
-                  listModel2.addElement(contenido.get("C_AUTOR")+" "+contenido.get("E_MATERIA")+" "+contenido.get("E_RAMA")+" "+contenido.get("E_TEMA"));
+                  listModel2.addElement(contenido.get("C_AUTOR")+" / "+contenido.get("E_MATERIA")+" "+contenido.get("E_RAMA")+" "+contenido.get("E_TEMA"));
                 }
             }       
             else {
                 listModel2.addElement("No hay banners disponibles");
             }
-            buttonRefresh.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {    
-                JOptionPane.showMessageDialog(null, OtrosBanners.get(listOtherBanners.getSelectedIndex()).toString(), " ", JOptionPane.INFORMATION_MESSAGE);              
-            
-            
-            }
-           });          
+                     
         }
      }
      this.buttonDeleteBanner.addActionListener(new ActionListener() {

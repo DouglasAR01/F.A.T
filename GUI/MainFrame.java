@@ -21,7 +21,7 @@ import java.util.ArrayList;
 /**
  * 
  * @author Lokuest-Pecons
- * @version 0.1
+ * @version 0.8
  */
 public class MainFrame extends ModelFrame
 {
@@ -109,7 +109,7 @@ public class MainFrame extends ModelFrame
         
         ControladorDeEventos.crearBanner(panelCrearBanner);
         
-        ControladorDeEventos.agregarTransicionBoton(
+        ControladorDeEventos.agregarTransicionBotonActualizarPanel(
         panelCrearBanner.getBotonCrear(),
         panelCrearBanner,
         panelUsuario);        

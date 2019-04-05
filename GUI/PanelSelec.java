@@ -17,10 +17,9 @@ import java.net.URL;
 import java.io.IOException;
 
 /**
- * Write a description of class PanelSelec here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Lokuest-Pecons
+ * @version 0.8
  */
 
 public class PanelSelec extends ModelPanel

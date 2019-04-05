@@ -6,7 +6,7 @@ import Controladores.*;
 /**
  * 
  * @author Lokuest-Pecons
- * @version 0.1
+ * @version 0.8
  */
 public abstract class ModelPanel extends JPanel
 {

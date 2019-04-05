@@ -4,7 +4,7 @@ import javax.swing.JOptionPane;
 /**
  *  
  * @author Lokuest-Pecons
- * @version 0.1
+ * @version 0.8
  */
 public class PanelBox
 {

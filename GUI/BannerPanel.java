@@ -21,10 +21,9 @@ import javax.swing.JOptionPane;
 
 
 /**
- * Write a description of class BannerFrame here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Lokuest-Pecons
+ * @version 0.8
  */
 public class BannerPanel extends ModelPanel
 {
@@ -58,6 +57,8 @@ public class BannerPanel extends ModelPanel
     private JButton buttonCancel;
     private UsuarioRegistrado usuarioActual;
     private int bannerType;
+    private String userType;
+    private String userName;
     public BannerPanel()
     {  
        super(false);       
@@ -309,8 +310,8 @@ public class BannerPanel extends ModelPanel
     public void actualizar(String datos, ConexionBD c){ 
         limpiar();
         StringTokenizer tokens=new StringTokenizer(datos,"/");
-        String userType=tokens.nextToken();
-        String userName=tokens.nextToken();
+        this.userType=tokens.nextToken();
+        this.userName=tokens.nextToken();
         this.usuarioActual=ControladorUsuarios.getUsuario(c,userName);
         if(userType.equals("Aprendiz")){
           this.bannerType=1;  
@@ -379,7 +380,9 @@ public class BannerPanel extends ModelPanel
         textfield7.setText("");
         textfield8.setText("");
     }
-        
+   public String getUserData(){
+        return this.userType+"/"+this.userName;
+    }     
         
         
 }
