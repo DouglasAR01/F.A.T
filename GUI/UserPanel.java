@@ -240,7 +240,9 @@ public class UserPanel extends ModelPanel
     }
   public void actualizar(String datos, ConexionBD c){  
      this.misBanners=null;
-     this.OtrosBanners=null; 
+     this.OtrosBanners=null;
+     this.buttonSeeMB.setVisible(true);
+     this.buttonRefresh.setVisible(true);
       if(datos.isEmpty()){
           labelType.setText("");
           labelName.setText("Por favor Ingrese Un Usuario");          
@@ -265,6 +267,7 @@ public class UserPanel extends ModelPanel
           buttonCrear.setVisible(false);          
           listModel1.addElement("No se Puede Añadir/Modificar/Eliminar Banners siendo un Usuario Registrado.");
           actualUser = ControladorUsuarios.getUsuario(c,userName);
+          this.buttonSeeMB.setVisible(false);          
           break;
         
        case "Aprendiz":
@@ -297,6 +300,7 @@ public class UserPanel extends ModelPanel
             else {
                 if(!userType.equals("UsuarioRegistrado")){
                     listModel1.addElement("El Usuario No tiene Banners");
+                    this.buttonSeeMB.setVisible(false);
                 }
             }    
           
@@ -309,6 +313,7 @@ public class UserPanel extends ModelPanel
             }       
             else {
                 listModel2.addElement("No hay banners disponibles");
+                this.buttonRefresh.setVisible(false);
             }
                      
         }
